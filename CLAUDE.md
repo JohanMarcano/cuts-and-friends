@@ -12,14 +12,11 @@ migración: respaldos de zona DNS, inventario del sitio viejo, mapa de
 redirecciones, scripts de crawl, notas de tokens de Figma y la
 documentación del proyecto.
 
-Estructura:
+Estructura actual (lo demás — `dns/`, `crawl/`, `redirects/`,
+`scripts/` — todavía no se creó; no asumir que existe):
 
 ```
-docs/      CONTEXTO.md, ESTADO.md
-dns/       exports de zona (Wix, Cloudflare)
-crawl/     inventario del sitio Wix: URLs, textos, metadatos
-redirects/ mapa de 301
-scripts/   utilidades de crawl y verificación
+docs/      CONTEXTO.md, ESTADO.md, tokens de diseño, guía de Elementor
 ```
 
 ## Estado del proyecto
@@ -30,6 +27,26 @@ para pegar.
 
 El plan por hitos está en `docs/CONTEXTO.md`. Cada hito tiene criterio
 de salida; no se avanza al siguiente sin cumplirlo.
+
+## Alcance
+
+Fase 1 es **solo HOME**. CONTACTO está fuera del proyecto (no se
+maqueta, no se estima, no se menciona como pendiente de esta fase). El
+blog (BLOG HOME, BLOG POST) es fase 2, a futuro.
+
+## Fuente de verdad del diseño
+
+- `docs/design-tokens.md` — tokens extraídos del sistema
+  "01 · Foundations" del Figma (Variables + Estilos nombrados). Es la
+  fuente autoritativa de colores, tipografía y espaciado.
+- `docs/elementor-setup.md` — guía de carga de esos tokens como
+  estilos globales en Elementor.
+- Los archivos con sufijo `-v1` o `-OBSOLETO` son históricos. **No
+  usarlos ni citarlos como referencia** — quedaron desactualizados por
+  cambios posteriores en el Figma o en el enfoque.
+- El Figma tiene páginas antiguas ("CUTS&FRIENDS DESKTOP" y
+  "CUTS&FRIENDS MOBILE") que ya no aplican. Los frames vigentes están
+  en "01 · Foundations", "02 · Components" y "03 · Landing".
 
 ## Reglas duras
 
@@ -42,6 +59,12 @@ de salida; no se avanza al siguiente sin cumplirlo.
 - El staging va siempre con **noindex y protección por contraseña**.
 - Sin secretos en el repo: credenciales de cPanel, Cloudflare, Google
   Workspace o Agenda Pro no se commitean nunca.
+- Los tamaños de texto mobile del Figma son ilegibles en varios
+  estilos (body 9px, button 11px). Al maquetar se usan los valores de
+  la columna "Mobile propuesto" de `docs/elementor-setup.md`, no los
+  del Figma.
+- Al maquetar en Elementor, aplicar siempre estilos globales en los
+  widgets, nunca valores escritos a mano.
 
 ## Datos de infraestructura
 
