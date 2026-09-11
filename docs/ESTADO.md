@@ -41,9 +41,11 @@
 
 ## En curso
 
-- Reprocesar el Figma rehecho por Agustina (página **"03 landings"**)
-  para actualizar `docs/design-tokens.md` con los valores definitivos.
-- Cargar colores y fuentes globales en Elementor → Ajustes del sitio.
+- Prueba de un día: construir header, hero y carrusel de Services
+  como tema WordPress a medida, en vez de maquetar con Elementor.
+  Si al final del día las tres secciones corren bien, el proyecto
+  sigue por esa vía. Si no, se vuelve a Elementor sin pérdida: la
+  documentación de diseño sirve para ambas rutas.
 
 ## Bloqueado / esperando
 
@@ -76,6 +78,15 @@
 - Normalizaciones aplicadas sobre el Figma anterior, pendientes de
   reconfirmar con el archivo nuevo: `#060606` unificado con `#000000`,
   FAQ a 21px, encabezado "Nosotros" a 45px.
+- Se evalúa reemplazar Elementor por un tema WordPress a medida.
+  Motivo: el cliente no va a editar el sitio, todos los cambios los
+  hace Johan, y las dos piezas de mayor riesgo (scrollbar arrastrable
+  de Swiper y popup a pantalla completa) son más simples en código
+  que en Elementor. Decisión pendiente de la prueba.
+- Despliegue por Control de versiones Git de cPanel (Webempresa),
+  desde un repo privado de GitHub. El staging sigue siendo
+  cuts.shopbotagency.com con contraseña; el cliente no ve ningún
+  cambio de flujo.
 
 ## Datos confirmados
 
@@ -123,6 +134,8 @@
 
 ## Pendientes
 
+- Crear repo privado en GitHub y conectarlo al Control de versiones
+  Git de cPanel.
 - Subir GOOD_BRUSH en Elementor → Fuentes personalizadas. Convertir a
   .woff2 antes si el zip solo trae .ttf.
 - Guardar el archivo de licencia de la fuente en `docs/licencias/`.
