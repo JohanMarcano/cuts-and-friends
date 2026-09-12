@@ -1,0 +1,47 @@
+/*
+  Button — Cuts And Friends
+  Fuente: docs/componentes.md §1. Variante "Agendar" (la única en uso
+  por ahora; "Reserva Online" queda para cuando se maquete el FAQ).
+
+  El ancho documentado en Figma (146/297px Agendar, 161px Reserva
+  Online) no se token-iza: varía según el largo del texto de cada
+  variante, así que se resuelve con padding-inline + white-space:nowrap
+  en vez de un ancho fijo. Solo el alto (--button-height) es constante
+  por breakpoint.
+*/
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--button-height);
+  padding-inline: var(--spacing-32);
+  border-radius: var(--radius-full);
+  background-color: var(--color-action-primary-bg);
+  color: var(--color-action-primary-text);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-button-md);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-button-md);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  /* Sin estado hover documentado en Figma (componentes.md §1) —
+     afordancia mínima, no cambia ningún valor de la escala. */
+  opacity: 0.9;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-text-accent);
+  outline-offset: 2px;
+}
+
+@media (min-width: 1200px) {
+  .btn {
+    padding-inline: var(--spacing-48);
+  }
+}

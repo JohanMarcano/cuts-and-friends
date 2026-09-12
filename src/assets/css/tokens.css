@@ -183,6 +183,50 @@
      acotado): valor pedido por Johan (2026-09-11), sin fuente en el
      Figma — es un ancho de transición, no un dato de diseño. */
   --container-max-width-tablet: 600px;
+
+  /* ============================================
+     COMPONENTE — Header (docs/componentes.md §7-9)
+     Medidas de instancia real documentadas en Figma pero fuera de la
+     escala de tipografía/spacing — se token-izan igual para no
+     escribirlas a mano en header.css. Mobile-first: valores de acá son
+     la instancia real usada en el Header mobile (41×43, distinta del
+     símbolo "Logo/Mobile" catalogado de 82×86 — ver pendiente 5 de
+     componentes.md §12); el override desktop está en el bloque
+     @media de abajo.
+     ============================================ */
+  --header-logo-width: 41px;
+  --header-logo-height: 43px;
+  --header-menu-button-size: 44px; /* Menu Button, componentes.md §8. Reutilizado como target táctil genérico en los demás botones de ícono (cerrar del menú móvil, cerrar del popup de Agenda Pro) — no hay un token de "icon button" separado documentado. */
+  --header-menu-icon-size: 22px; /* ícono interior del Menu Button, §8 */
+
+  /* ============================================
+     COMPONENTE — Botón (docs/componentes.md §1)
+     Solo se token-iza el alto: el ancho de cada variante (Agendar
+     146/297px, Reserva Online 161px) varía con el largo del texto, así
+     que se resuelve con padding-inline (spacing/*) + white-space:nowrap
+     en vez de un ancho fijo.
+     ============================================ */
+  --button-height: 30px;
+
+  /* ============================================
+     COMPONENTE — Hero (docs/home-estructura.md §2)
+     ============================================ */
+  --hero-min-height: 508px;
+  --hero-content-offset-top-mobile: 198px; /* posición del bloque de texto sobre el fondo, Figma mobile */
+  --hero-image-width-desktop: 753px;
+  --hero-image-height-desktop: 708px;
+
+  /* ============================================
+     COMPONENTE — Service Card (docs/componentes.md §2)
+     Mobile: alto común a las 2 variantes documentadas (Corte/Barba,
+     534px) — el ancho real difiere entre instancias (339 vs 356) por
+     una inconsistencia del Figma; en el sitio la tarjeta mobile va a
+     ancho completo del carrusel, no a un ancho fijo.
+     ============================================ */
+  --service-card-height-mobile: 534px;
+  --service-card-width-desktop: 350px;
+  --service-card-height-desktop: 551px;
+  --line-height-service-card-description-mobile: 17px; /* desviación documentada: no coincide con --line-height-body-sm */
 }
 
 /* ============================================
@@ -221,5 +265,11 @@
     --line-height-body-sm: 28px;
 
     --container-padding-inline: var(--spacing-80);
+
+    --header-logo-width: 154px;
+    --header-logo-height: 160px;
+
+    --button-height: 61px;
+    --hero-min-height: 810px;
   }
 }

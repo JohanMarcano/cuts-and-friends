@@ -1,0 +1,86 @@
+/*
+  Service Card — Cuts And Friends
+  Fuente: docs/componentes.md §2.
+
+  Mobile: solo existen instancias Figma para "Corte" y "Barba" — las
+  4 tarjetas del sitio (Corte, Cabello + Barba, Barba, Facial) usan los
+  mismos tokens de esas 2 variantes documentadas.
+
+  La imagen es un placeholder de color sólido (sin asset todavía, ver
+  TODO en el HTML) — nunca <img> a un archivo inexistente.
+*/
+
+.service-card {
+  position: relative;
+  width: 100%;
+  height: var(--service-card-height-mobile);
+  border-radius: var(--radius-none);
+  overflow: hidden;
+}
+
+.service-card__media {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bg-muted); /* TODO: foto del servicio pendiente */
+}
+
+.service-card__body {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--spacing-12);
+  padding: var(--spacing-24);
+  text-align: center;
+}
+
+.service-card__title {
+  font-family: var(--font-family-base);
+  /* label/lg mobile (17px) en tamaño, pero peso Bold real de la
+     instancia — no SemiBold como define el estilo label/lg base
+     (mismatch documentado en componentes.md §2). */
+  font-size: var(--font-size-label-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-100);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-default);
+}
+
+.service-card__description {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-service-card-description-mobile);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-service-card-description-mobile);
+  letter-spacing: var(--tracking-none);
+  color: var(--color-text-default);
+  max-width: 280px;
+}
+
+@media (min-width: 1200px) {
+  .service-card {
+    width: var(--service-card-width-desktop);
+    height: var(--service-card-height-desktop);
+    flex: none;
+  }
+
+  .service-card__title {
+    font-size: var(--font-size-label-md);
+    font-weight: var(--font-weight-bold);
+    max-width: 330px;
+  }
+
+  .service-card__description {
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body-sm);
+    letter-spacing: var(--tracking-none);
+    max-width: 330px;
+  }
+
+  .service-card__body {
+    padding: var(--spacing-32);
+    gap: var(--spacing-16);
+  }
+}

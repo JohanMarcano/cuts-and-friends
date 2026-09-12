@@ -1,0 +1,70 @@
+/*
+  Services — Cuts And Friends
+  Fuente: docs/home-estructura.md §3 y "Decisiones confirmadas".
+
+  Carrusel en ambos breakpoints (Swiper vendorizado, ver
+  assets/vendor/swiper/ y assets/js/services-carousel.js), con
+  scrollbar arrastrable (mouse y touch) como indicador de avance.
+
+  Mobile: 1 tarjeta a ancho completo, título con badge bg/accent detrás
+  y párrafo introductorio (no existe en desktop).
+  Desktop: 4 slides de 350px, gap ~32px (spacing/32).
+*/
+
+.services {
+  padding-block: var(--spacing-64);
+}
+
+.services__title {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-heading-h2);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-default);
+  text-align: center;
+  /* Badge decorativo detrás del título, solo mobile (home-estructura.md §3) */
+  display: inline-block;
+  background-color: var(--color-bg-accent);
+  padding: var(--spacing-8) var(--spacing-20);
+}
+
+.services__title-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.services__intro {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-default);
+  text-align: center;
+  max-width: 320px;
+  margin-inline: auto;
+  margin-block-start: var(--spacing-16);
+}
+
+.services-carousel {
+  margin-block-start: var(--spacing-32);
+  padding-bottom: var(--spacing-32);
+}
+
+.services-carousel .swiper-scrollbar {
+  background-color: var(--color-bg-muted);
+}
+
+.services-carousel .swiper-scrollbar-drag {
+  background-color: var(--color-bg-accent);
+}
+
+@media (min-width: 1200px) {
+  .services__title {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .services__intro {
+    display: none;
+  }
+}

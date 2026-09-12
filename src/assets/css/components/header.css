@@ -1,0 +1,239 @@
+/*
+  Header — Cuts And Friends
+  Fuente: docs/componentes.md §9 (Header) y docs/home-estructura.md §1.
+
+  Mobile (base): el header flota transparente y superpuesto al Hero
+  (ambos arrancan en y=0), con la franja de contacto + logo + botón
+  hamburguesa. El menú (Galería/Barberos/Blog) vive en el <dialog>
+  de pantalla completa, no en este bloque.
+
+  Desktop (≥1200px): el header vuelve al flujo normal, antes del Hero,
+  con dos franjas: barra superior en bg/muted y debajo el nav con el
+  logo centrado encima.
+*/
+
+/* ============================================
+   HEADER — mobile (base)
+   ============================================ */
+.site-header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  /* Sin escala de z-index documentada: valor mínimo para quedar sobre
+     el Hero (fondo de sección, sin overlays propios). */
+  z-index: 40;
+  background-color: transparent;
+}
+
+.site-header__topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: var(--spacing-16);
+  padding-block: var(--spacing-8);
+  /* Franja de contacto: una sola línea, contenida dentro de su propio
+     alto — no debe crecer ni "competir" visualmente con el resto del
+     header (componentes.md §9: body/lg en desktop, mínimo legible de
+     "Mobile propuesto" en mobile). */
+  overflow: hidden;
+}
+
+.site-header__address,
+.site-header__phone {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-100);
+  letter-spacing: var(--tracking-none);
+  color: var(--color-text-default);
+  white-space: nowrap;
+}
+
+.site-header__address {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.site-header__phone {
+  flex: 0 0 auto;
+  text-decoration: none;
+}
+
+.site-header__nav-row-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--spacing-12);
+}
+
+.site-header__logo {
+  display: inline-flex;
+}
+
+.site-header__logo-placeholder {
+  display: block;
+  width: var(--header-logo-width);
+  height: var(--header-logo-height);
+  border: 1px dashed var(--color-border-default);
+}
+
+.site-header__nav {
+  display: none;
+}
+
+.site-header__menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--header-menu-button-size);
+  height: var(--header-menu-button-size);
+  color: var(--color-text-default);
+}
+
+.site-header__menu-icon {
+  width: var(--header-menu-icon-size);
+  height: var(--header-menu-icon-size);
+}
+
+.site-header__nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-48);
+}
+
+.site-header__nav-list a {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-nav-link);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-none);
+  color: var(--color-text-default);
+}
+
+.site-header__nav-list a[aria-disabled="true"],
+.mobile-menu__nav-list a[aria-disabled="true"] {
+  /* Blog es fase 2 (CLAUDE.md): el link queda visible pero inerte. */
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Foco visible en todos los controles interactivos del header */
+.site-header__menu-btn:focus-visible,
+.site-header__logo:focus-visible,
+.site-header__nav-list a:focus-visible,
+.mobile-menu__logo:focus-visible,
+.mobile-menu__close:focus-visible,
+.mobile-menu__nav-list a:focus-visible {
+  outline: 2px solid var(--color-bg-accent);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   MENÚ MÓVIL — <dialog> a pantalla completa
+   ============================================ */
+.mobile-menu {
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  background-color: var(--color-bg-default);
+  color: var(--color-text-default);
+}
+
+.mobile-menu[open] {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu::backdrop {
+  background-color: transparent;
+}
+
+.mobile-menu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--spacing-12);
+}
+
+.mobile-menu__logo {
+  display: inline-flex;
+}
+
+.mobile-menu__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--header-menu-button-size);
+  height: var(--header-menu-button-size);
+  color: var(--color-text-default);
+}
+
+.mobile-menu__close-icon {
+  width: var(--header-menu-icon-size);
+  height: var(--header-menu-icon-size);
+}
+
+.mobile-menu__nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu__nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-32);
+}
+
+.mobile-menu__nav-list a {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-nav-link);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-none);
+  color: var(--color-text-default);
+}
+
+/* ============================================
+   DESKTOP (≥1200px)
+   ============================================ */
+@media (min-width: 1200px) {
+  .site-header {
+    position: static;
+    background-color: transparent;
+  }
+
+  .site-header__topbar {
+    background-color: var(--color-bg-muted);
+  }
+
+  .site-header__topbar-inner {
+    justify-content: flex-start;
+    column-gap: var(--spacing-32);
+    padding-block: var(--spacing-20);
+  }
+
+  .site-header__nav-row-inner {
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--spacing-24);
+    padding-block: var(--spacing-32);
+  }
+
+  .site-header__nav {
+    display: block;
+  }
+
+  .site-header__menu-btn {
+    display: none;
+  }
+}

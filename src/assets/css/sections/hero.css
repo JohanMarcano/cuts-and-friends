@@ -1,0 +1,109 @@
+/*
+  Hero — Cuts And Friends
+  Fuente: docs/home-estructura.md §2.
+
+  Mobile (base): 1 columna, imagen de fondo (con máscara decorativa
+  orgánica — pendiente el asset, ver placeholder abajo), texto y CTA
+  alineados a la izquierda sobre la imagen. La palabra "BARBERÍA" se
+  omite (confirmado). El titular es el párrafo de pesos mixtos.
+
+  Desktop (≥1200px): 2 columnas — foto a la izquierda, y a la derecha
+  el apilado "BARBERÍA" → titular → CTA.
+*/
+
+.hero {
+  position: relative;
+  min-height: var(--hero-min-height);
+  overflow: hidden;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-bg-muted); /* TODO: foto de barbero + máscara orgánica pendientes (asset de la diseñadora) */
+}
+
+.hero__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-120);
+  padding-inline: var(--container-padding-inline);
+  padding-block-start: var(--hero-content-offset-top-mobile);
+}
+
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  max-width: 300px;
+}
+
+.hero__word {
+  display: none;
+}
+
+.hero__headline--mobile {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-heading-h1);
+  color: var(--color-text-default);
+}
+
+.hero__headline--mobile .hero__accent {
+  font-family: var(--font-family-display);
+  color: var(--color-text-accent);
+}
+
+.hero__headline--desktop {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-64);
+    padding-inline: var(--container-padding-inline);
+  }
+
+  .hero__media {
+    position: static;
+    flex: none;
+    width: var(--hero-image-width-desktop);
+    height: var(--hero-image-height-desktop);
+  }
+
+  .hero__content {
+    flex: 1;
+    padding: 0;
+    gap: var(--spacing-32);
+  }
+
+  .hero__text {
+    max-width: none;
+  }
+
+  .hero__word {
+    display: block;
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-display-xl);
+    color: var(--color-text-accent);
+    line-height: var(--leading-100);
+  }
+
+  .hero__headline--mobile {
+    display: none;
+  }
+
+  .hero__headline--desktop {
+    display: block;
+    font-family: var(--font-family-base);
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-heading-h1-alt-2);
+    line-height: var(--leading-100);
+    color: var(--color-text-default);
+  }
+}

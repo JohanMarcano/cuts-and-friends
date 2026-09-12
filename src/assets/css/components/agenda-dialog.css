@@ -1,0 +1,80 @@
+/*
+  Popup de Agenda Pro — Cuts And Friends
+  Fuente: "Decisiones confirmadas" al inicio de docs/home-estructura.md.
+
+  Un solo <dialog> reutilizado por todos los CTA de agenda de la
+  página. Mobile (base): pantalla completa (100dvh, sin bordes).
+  Desktop (≥1200px): caja centrada con alto propio para el iframe —
+  ese alto no está documentado en Figma (el iframe es de otro dominio,
+  ancho fijo 810px, sin autoajuste), así que es un valor razonable a
+  validar en navegador, no un token de diseño.
+*/
+
+.agenda-dialog {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: var(--color-bg-default);
+  color: var(--color-text-default);
+}
+
+.agenda-dialog[open] {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+}
+
+.agenda-dialog::backdrop {
+  background-color: color-mix(in srgb, var(--color-overlay-image) 60%, transparent);
+}
+
+.agenda-dialog__header {
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--spacing-12);
+}
+
+.agenda-dialog__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--header-menu-button-size);
+  height: var(--header-menu-button-size);
+  color: var(--color-text-default);
+}
+
+.agenda-dialog__close-icon {
+  width: var(--header-menu-icon-size);
+  height: var(--header-menu-icon-size);
+}
+
+.agenda-dialog__close:focus-visible {
+  outline: 2px solid var(--color-bg-accent);
+  outline-offset: 2px;
+}
+
+.agenda-dialog__iframe-wrap {
+  flex: 1;
+  width: 100%;
+  overflow: auto;
+}
+
+.agenda-dialog__iframe-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (min-width: 1200px) {
+  .agenda-dialog[open] {
+    width: min(90vw, 860px);
+    height: min(90vh, 720px);
+    margin: auto;
+  }
+}
