@@ -14,8 +14,8 @@
   margin: 0;
   padding: 0;
   border: none;
-  background-color: var(--color-bg-default);
-  color: var(--color-text-default);
+  background-color: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
 }
 
 .agenda-dialog[open] {
@@ -30,7 +30,9 @@
 }
 
 .agenda-dialog::backdrop {
-  background-color: color-mix(in srgb, var(--color-overlay-image) 60%, transparent);
+  /* Overlay más transparente que el resto del sitio: el contenedor
+     del dialog ahora es blanco, no necesita tanto contraste detrás. */
+  background-color: color-mix(in srgb, var(--color-overlay-image) 35%, transparent);
 }
 
 .agenda-dialog__header {
@@ -45,7 +47,7 @@
   justify-content: center;
   width: var(--header-menu-button-size);
   height: var(--header-menu-button-size);
-  color: var(--color-text-default);
+  color: var(--color-text-inverse);
 }
 
 .agenda-dialog__close-icon {
@@ -62,6 +64,10 @@
   flex: 1;
   width: 100%;
   overflow: auto;
+  /* Padding mínimo: el header ya reserva su propia fila arriba, así
+     que este padding no tapa nada del iframe, solo lo separa del
+     borde del dialog. */
+  padding: var(--spacing-12);
 }
 
 .agenda-dialog__iframe-wrap iframe {

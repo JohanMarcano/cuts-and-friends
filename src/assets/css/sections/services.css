@@ -8,7 +8,12 @@
 
   Mobile: 1 tarjeta a ancho completo, título con badge bg/accent detrás
   y párrafo introductorio (no existe en desktop).
-  Desktop: 4 slides de 350px, gap ~32px (spacing/32).
+  Desktop: 4 slides visibles de 350px, gap ~32px (spacing/32), sobre un
+  total de 7 tarjetas (el Figma solo documenta 4 como ejemplo — la
+  barbería tiene 7 servicios, ver comentario en index.html). Con 7
+  slides y 4 visibles el scrollbar queda con desplazamiento real; el
+  cursor grab/grabbing al arrastrar lo pone el propio bundle de Swiper,
+  no hace falta CSS propio.
 */
 
 .services {
