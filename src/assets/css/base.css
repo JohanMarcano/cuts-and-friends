@@ -1,0 +1,131 @@
+/*
+  Base — Cuts And Friends
+  Reset moderno + tipografía base + utilidades transversales.
+  Todo valor de color/tamaño/peso/espaciado se consume desde
+  tokens.css vía var(--...) — nada literal acá.
+*/
+
+/* ============================================
+   FUENTES
+   ============================================ */
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat-var.woff2") format("woff2-variations"),
+       url("../fonts/montserrat-var.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GOOD BRUSH";
+  src: url("../fonts/good-brush.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
+   RESET MODERNO
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  line-height: var(--leading-100);
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* ============================================
+   TIPOGRAFÍA BASE
+   ============================================ */
+html {
+  font-family: var(--font-family-base);
+  font-size: 100%;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body-md);
+  color: var(--color-text-default);
+  background-color: var(--color-bg-default);
+  letter-spacing: var(--tracking-none);
+}
+
+/* ============================================
+   UTILIDADES
+   ============================================ */
+.container {
+  width: 100%;
+  /* El interior (sin padding) debe medir --container-max-width. El
+     max-width del propio elemento tiene que sumarle el padding de
+     ambos lados, si no el contenido queda --container-padding-inline
+     * 2 más angosto que lo documentado. */
+  max-width: calc(var(--container-max-width) + (var(--container-padding-inline) * 2));
+  margin-inline: auto;
+  padding-inline: var(--container-padding-inline);
+}
+
+/* 768px–1199px: layout todavía mobile, pero el .container se acota a
+   un ancho de transición y se centra (ver tokens.css,
+   --container-max-width-tablet). */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .container {
+    max-width: var(--container-max-width-tablet);
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

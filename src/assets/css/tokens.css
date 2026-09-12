@@ -1,0 +1,225 @@
+/*
+  Tokens — Cuts And Friends
+  Fuente: docs/design-tokens.md (sistema "01 · Foundations" del Figma),
+  docs/elementor-setup.md (columna "Mobile propuesto") y
+  docs/componentes.md §11 (valores sueltos sin catalogar).
+
+  Mobile-first: los valores de :root son el layout base (390px).
+  El desktop (≥1200px) sobrescribe solo lo que documentadamente cambia
+  por breakpoint — el spacing NO cambia (ver design-tokens.md,
+  "Responsive — Spacing"). Breakpoint subido de 1024px a 1200px
+  (ajuste 2026-09-11): a 1024px el carrusel de Services (4×350px + gaps
+  ≈ 1496px) y la fila de Team (3×488px) no entran sin romper la
+  paridad con el Figma. Entre 768px y 1199px el layout sigue siendo el
+  mobile, con `.container` limitado a --container-max-width-tablet.
+
+  Normalizaciones aplicadas (docs/ESTADO.md):
+  - #060606 se unifica con #000000: en todo este catálogo "negro" es
+    un solo valor, --color-black, sin variante secundaria.
+  - FAQ (pregunta del acordeón) a 21px desktop: ya es el valor nativo
+    de --font-size-label-md-alt-faq, documentado en componentes.md §5.
+  - Encabezado "Nosotros" a 45px: coincide con --font-size-heading-h2
+    desktop, que es el estilo que usa la sección Experience.
+  - El radio literal de 30.5px (botón desktop, botón de Team Card) y
+    el de 35.7px (botón "Reserva Online" del FAQ desktop) se resuelven
+    como --radius-full: visualmente son un pill sobre una caja de
+    61px/71px de alto, mismo resultado que 999px.
+*/
+
+:root {
+  /* ============================================
+     COLOR — Primitivos
+     ============================================ */
+  --color-green-900: #1C241D; /* declarado en Figma, sin alias semántico asignado (ver design-tokens.md, pendiente 1) */
+  --color-teal-500: #3EA69B;
+  --color-gray-500: #8E918E;
+  --color-gray-300: #D9D9D9;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+
+  /* COLOR — Alias semánticos (design-tokens.md) */
+  --color-bg-default: var(--color-black);
+  --color-bg-inverse: var(--color-white);
+  --color-bg-accent: var(--color-teal-500);
+  --color-text-default: var(--color-white);
+  --color-text-inverse: var(--color-black);
+  --color-text-muted: var(--color-gray-500);
+  --color-text-accent: var(--color-teal-500);
+  --color-border-default: var(--color-white);
+  --color-border-inverse: var(--color-black);
+  --color-action-primary-bg: var(--color-teal-500);
+  --color-action-primary-text: var(--color-white);
+  --color-action-secondary-bg: var(--color-black);
+  --color-action-secondary-text: var(--color-white);
+  --color-overlay-image: var(--color-black);
+
+  /* COLOR — Alias sin catalogar en design-tokens.md, documentados en
+     componentes.md §11 */
+  --color-bg-muted: var(--color-gray-500); /* franja superior del Header desktop */
+  --color-text-subtle: var(--color-gray-300); /* título de Benefit Card */
+
+  /* ============================================
+     TIPOGRAFÍA — Familias y pesos
+     ============================================ */
+  --font-family-base: "Montserrat", -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-family-display: "GOOD BRUSH", "Brush Script MT", cursive;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Tracking = % del tamaño de fuente (design-tokens.md). Expresado en
+     em para que escale solo con el font-size de cada breakpoint, sin
+     necesidad de recalcular px por variante — esto resuelve además la
+     nota de elementor-setup.md sobre recalcular el tracking de
+     button/md cuando el tamaño mobile propuesto (14px) difiere del
+     original de Figma (11px). */
+  --tracking-none: 0em;
+  --tracking-wide: 0.23em;
+
+  /* Line-height expresado como múltiplo unitless cuando el Figma dice
+     "100%" (= igual al tamaño de fuente en cualquier breakpoint). */
+  --leading-100: 1;
+  --leading-body-lg-alt-3: 1.461; /* 146.1%, único caso no-100% sin variable propia */
+
+  /* ============================================
+     TIPOGRAFÍA — Tamaños de fuente (mobile primero)
+     Los estilos marcados "ilegible" en CLAUDE.md usan la columna
+     "Mobile propuesto" de elementor-setup.md, no el crudo del Figma.
+     ============================================ */
+  --font-size-display-xl: 25px; /* GOOD BRUSH, ya legible en mobile, sin cambio */
+  --font-size-heading-h1: 25px;
+  --font-size-heading-h1-alt-2: 55px;
+  --font-size-heading-h2: 45px; /* normalización "Nosotros" incluida: título Experience usa este mismo tamaño en ambos breakpoints salvo lo indicado abajo en desktop */
+  --font-size-heading-h2-alt-2: 32px;
+  --font-size-heading-h3: 16px;
+  --font-size-heading-h3-alt-2: 27px;
+  --font-size-body-lg: 16px; /* Mobile propuesto (crudo Figma: 10px, ilegible) */
+  --font-size-body-lg-alt-2: 23px;
+  --font-size-body-lg-alt-3: 23px;
+  --font-size-body-md: 16px; /* Mobile propuesto (crudo Figma: 9px, ilegible) */
+  --font-size-body-md-alt-2: 16px;
+  --font-size-body-sm: 16px; /* Mobile propuesto (crudo Figma: 8px, ilegible) */
+  --font-size-label-lg: 17px;
+  --font-size-label-lg-alt-2: 16px;
+  --font-size-label-md: 13px;
+  --font-size-button-md: 14px; /* Mobile propuesto (crudo Figma: 11px, ilegible). Aplica a "Agendar" y a "Reserva Online" — confirmado por el cliente del diseño (2026-09-11) que ambas quedan al mismo tamaño, pese a que "Reserva Online" tiene su propio crudo Figma de 10px (componentes.md §11) */
+  --font-size-button-md-alt-2: 17px;
+
+  /* Estilos sin catalogar en los 18 de design-tokens.md, documentados
+     en componentes.md §11. Tamaño mobile deducido: no están en la
+     tabla de elementor-setup.md, así que no hay columna "Mobile
+     propuesto" propia — se aplicó el mínimo genérico que
+     elementor-setup.md fija para su misma categoría ("...sube esos
+     casos a un mínimo usable: 16px body, 14px button, 12px label").
+     Quedan marcados como valor deducido en el resumen final. */
+  --font-size-label-md-alt-faq: 12px; /* FAQ desktop: 21px (ver bloque @media). Crudo mobile Figma: 10px */
+  --font-size-label-md-alt-2-faq-mobile: 12px; /* estilo interno solo-mobile de la pregunta del FAQ, crudo Figma: 10px */
+  --font-size-nav-link: 16px; /* nav de Header/Footer, crudo mobile Figma (footer): 10px, tratado como categoría body */
+  --font-size-footer-schedule-title: 16px; /* "Horario Disponible:", crudo mobile Figma: 11px */
+  --font-size-footer-schedule-value: 16px; /* horarios en peso Light, crudo mobile Figma: 10px */
+
+  /* Valores literales reales de instancia (no catalogados) — ver
+     componentes.md §11. Confirmados por el cliente del diseño
+     (2026-09-11) como los valores correctos, en vez de los 9px/8px
+     que documenta design-tokens.md para body/md y body/sm mobile: no
+     son una inconsistencia del Figma a corregir, son intencionales.
+     No normalizar a esos tamaños base ni a los 16px de "Mobile
+     propuesto". */
+  --font-size-service-card-description-mobile: 12px; /* confirmado */
+  --font-size-benefit-description-mobile: 11px; /* confirmado */
+
+  /* ============================================
+     TIPOGRAFÍA — Line-heights con valor propio (mobile)
+     (los que son "100%" usan --leading-100 en vez de un token propio)
+     ============================================ */
+  --line-height-heading-h3: 22px;
+  --line-height-heading-h3-alt-2: 40px;
+  --line-height-body-md: 17px;
+  --line-height-body-md-alt-2: 24px;
+  --line-height-body-sm: 15px;
+  --line-height-button-md: 21px; /* igual en mobile y desktop */
+
+  /* ============================================
+     ESPACIADO — Escala base-4 (no cambia por breakpoint)
+     ============================================ */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-29: 29px;
+  --spacing-32: 32px;
+  --spacing-35: 35px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-52: 52px;
+  --spacing-64: 64px;
+  --spacing-68: 68px;
+  --spacing-80: 80px;
+  --spacing-96: 96px;
+  --spacing-120: 120px;
+
+  /* ============================================
+     RADIO DE BORDE
+     ============================================ */
+  --radius-none: 0;
+  --radius-full: 999px;
+
+  /* ============================================
+     LAYOUT — Contenedor
+     Ancho máximo documentado en docs/ESTADO.md / home-estructura.md
+     (frame desktop de 1920px con columnas centradas). El padding
+     lateral no está documentado por breakpoint: valor deducido,
+     tomado de la propia escala de spacing. Marcado como dudoso en el
+     resumen final.
+     ============================================ */
+  --container-max-width: 1560px;
+  --container-padding-inline: var(--spacing-20);
+  /* Rango 768px–1199px (layout mobile, pero .container centrado y
+     acotado): valor pedido por Johan (2026-09-11), sin fuente en el
+     Figma — es un ancho de transición, no un dato de diseño. */
+  --container-max-width-tablet: 600px;
+}
+
+/* ============================================
+   DESKTOP (≥1200px) — overrides documentados
+   ============================================ */
+@media (min-width: 1200px) {
+  :root {
+    --font-size-display-xl: 128px;
+    --font-size-heading-h1: 52px;
+    --font-size-heading-h1-alt-2: 77px;
+    --font-size-heading-h2: 45px;
+    --font-size-heading-h2-alt-2: 45px;
+    --font-size-heading-h3: 34px;
+    --font-size-heading-h3-alt-2: 34px;
+    --font-size-body-lg: 24px;
+    --font-size-body-lg-alt-2: 28px;
+    --font-size-body-lg-alt-3: 28px;
+    --font-size-body-md: 20px;
+    --font-size-body-md-alt-2: 20px;
+    --font-size-body-sm: 18px;
+    --font-size-label-lg: 24px;
+    --font-size-label-lg-alt-2: 32px;
+    --font-size-label-md: 20px;
+    --font-size-button-md: 21px;
+    --font-size-button-md-alt-2: 21px;
+
+    --font-size-label-md-alt-faq: 21px;
+    --font-size-nav-link: 28px;
+    --font-size-footer-schedule-title: 28px;
+    --font-size-footer-schedule-value: 24px;
+
+    --line-height-heading-h3: 30px;
+    --line-height-heading-h3-alt-2: 51px;
+    --line-height-body-md: 30px;
+    --line-height-body-md-alt-2: 32px;
+    --line-height-body-sm: 28px;
+
+    --container-padding-inline: var(--spacing-80);
+  }
+}

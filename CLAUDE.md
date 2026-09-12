@@ -89,3 +89,60 @@ El correo no depende de Wix. Los MX no se tocan en el cutover.
 - Comandos destructivos o que tocan servicios externos: mostrarlos
   primero, ejecutarlos después de confirmación.
 - Escribir en español.
+
+---
+
+## ⚠️ Prueba en curso — sitio estático (2026-09-11)
+
+Todo lo que este archivo dice sobre Elementor, WordPress y PHP queda
+**en pausa** mientras dure esta prueba. No lo apliques.
+
+Se está evaluando construir el sitio como HTML, CSS y JS planos en
+`src/`, desplegado a Vercel desde GitHub. Sin PHP, sin WordPress, sin
+frameworks, sin paso de build, sin Elementor.
+
+Alcance de la prueba: header, hero y carrusel de Services, más el
+popup de Agenda Pro. Si funciona, el proyecto sigue por esta vía. Si
+no, se vuelve a Elementor y esta sección se borra. La documentación de
+`docs/` sirve para ambas rutas y no cambia.
+
+### Estructura
+
+    src/                        ← Root Directory en Vercel
+    ├── index.html
+    ├── robots.txt
+    └── assets/
+        ├── css/
+        │   ├── tokens.css
+        │   ├── base.css
+        │   ├── components/
+        │   └── sections/
+        ├── js/
+        ├── fonts/
+        ├── img/
+        └── vendor/swiper/
+
+### Reglas no negociables
+
+- Mobile-first. Los estilos base son el layout de 390px.
+  Desktop entra solo en `@media (min-width: 1200px)` — a 1024px el
+  carrusel de Services (4×350px + gaps ≈ 1496px) y la fila de Team
+  (3×488px) no entran sin romper la paridad con el Figma. Entre 768px
+  y 1199px el layout sigue siendo el mobile, pero con `.container`
+  limitado a 600px y centrado.
+- Ningún color, tamaño, peso, tracking ni espaciado literal fuera de
+  `assets/css/tokens.css`. Todo se consume con `var(--...)`.
+- Un componente de `docs/componentes.md` = un CSS en
+  `assets/css/components/`. Una sección de `docs/home-estructura.md`
+  = un CSS en `assets/css/sections/` y un bloque en `index.html`
+  delimitado por comentarios `<!-- SECCIÓN: nombre -->`.
+- Clases BEM con el nombre del componente (`.service-card__title`).
+- Los textos van inline en el HTML, nunca generados por JS.
+- Todo botón de conversión lleva `data-track="agenda"` o
+  `data-track="whatsapp"`.
+- HTML semántico y accesible: landmarks, foco visible, `aria-expanded`
+  en acordeón y menú, `alt` real en las imágenes.
+- El CSS se carga por archivos separados con `<link>`, en orden:
+  tokens, base, components, sections. Sin `@import`.
+- No inventes valores que no estén en la documentación. Si falta un
+  dato, preguntá antes de asumir.

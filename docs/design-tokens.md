@@ -177,9 +177,9 @@ cambia** por breakpoint:
 | `typography/body/lg/alt-2/font-size` | 28 | 23 |
 | `typography/body/lg/alt-3/font-size` | 28 | 23 |
 | `typography/body/lg/alt-phone/font-size` ⚠️ | 24 | 20 |
-| `typography/body/md/font-size` | 20 | 9 |
+| `typography/body/md/font-size` | 20 | 9 ⚠️ |
 | `typography/body/md/alt-2/font-size` | 20 | 16 |
-| `typography/body/sm/font-size` | 18 | 8 |
+| `typography/body/sm/font-size` | 18 | 8 ⚠️ |
 | `typography/label/lg/font-size` | 24 | 17 |
 | `typography/label/lg/alt-2/font-size` | 32 | 16 |
 | `typography/label/md/font-size` | 20 | 13 |
@@ -190,6 +190,15 @@ cambia** por breakpoint:
 ⚠️ = token listado en la tabla Responsive pero sin estilo/swatch
 catalogado en "Text styles" — falta confirmar con la diseñadora a qué
 elemento de la UI corresponde antes de usarlo.
+
+`body/md` y `body/sm` mobile llevan además una segunda advertencia:
+las instancias reales que usan esa categoría en la landing (Service
+Card "Corte" y Benefit Card, ver `componentes.md` §11) no son 9px/8px
+sino **12px y 11px** respectivamente. El cliente del diseño confirmó
+(2026-09-11) que 12px/11px son los valores correctos para esas dos
+instancias puntuales — no es una inconsistencia del Figma a corregir.
+Los 9px/8px de esta tabla siguen siendo el valor crudo de la Variable
+`body/md`/`body/sm`, pero no aplican a esos dos usos específicos.
 
 ### Line-height (Desktop / Mobile)
 
