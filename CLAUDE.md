@@ -125,11 +125,26 @@ no, se vuelve a Elementor y esta sección se borra. La documentación de
 ### Reglas no negociables
 
 - Mobile-first. Los estilos base son el layout de 390px.
-  Desktop entra solo en `@media (min-width: 1200px)` — a 1024px el
-  carrusel de Services (4×350px + gaps ≈ 1496px) y la fila de Team
-  (3×488px) no entran sin romper la paridad con el Figma. Entre 768px
-  y 1199px el layout sigue siendo el mobile, pero con `.container`
-  limitado a 600px y centrado.
+  Desktop entra solo en `@media (min-width: 1025px)` (bajado de 1200px,
+  2026-09-14: el sistema fluido de abajo permite el cambio). Entre
+  768px y 1024px el layout sigue siendo el mobile, pero con
+  `.container` limitado a 600px y centrado.
+- Sistema fluido (2026-09-14): nada de medidas fijas por breakpoint
+  salvo la excepción explícita de "espaciados chicos" más abajo.
+  - Tamaños de fuente: `clamp(mínimo, preferido en vw, máximo)`, en
+    `rem` en los dos extremos (nunca `px`) — mínimo = valor mobile a
+    390px (con la corrección de legibilidad de "Mobile propuesto"
+    donde aplica), máximo = valor Figma a 1920px. Sin override de
+    font-size dentro del media query desktop.
+  - Anchos de tarjeta (Service Card, Team Card), fotos (Gallery, Team,
+    Hero) y altos de sección (Hero, Experience) fluidos vía
+    `aspect-ratio`, `%` del contenedor o `clamp()` — nunca un ancho o
+    alto fijo por breakpoint, y nunca `vh` (depende del alto de
+    ventana, no del ancho: deforma fotos en pantallas bajas y las hace
+    saltar en mobile cuando aparece/desaparece la barra del
+    navegador).
+  - Espaciados chicos (paddings internos, gaps de texto) sí pueden
+    quedar en valor fijo — no forman parte de este sistema.
 - Ningún color, tamaño, peso, tracking ni espaciado literal fuera de
   `assets/css/tokens.css`. Todo se consume con `var(--...)`.
 - Un componente de `docs/componentes.md` = un CSS en

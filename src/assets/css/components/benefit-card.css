@@ -44,7 +44,7 @@
   color: var(--color-text-default);
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
   .benefit-card__icon {
     width: var(--benefit-icon-size-desktop);
     height: var(--benefit-icon-size-desktop);

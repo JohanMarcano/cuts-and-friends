@@ -5,13 +5,25 @@
   docs/componentes.md §11 (valores sueltos sin catalogar).
 
   Mobile-first: los valores de :root son el layout base (390px).
-  El desktop (≥1200px) sobrescribe solo lo que documentadamente cambia
+  El desktop (≥1025px) sobrescribe solo lo que documentadamente cambia
   por breakpoint — el spacing NO cambia (ver design-tokens.md,
-  "Responsive — Spacing"). Breakpoint subido de 1024px a 1200px
-  (ajuste 2026-09-11): a 1024px el carrusel de Services (4×350px + gaps
-  ≈ 1496px) y la fila de Team (3×488px) no entran sin romper la
-  paridad con el Figma. Entre 768px y 1199px el layout sigue siendo el
-  mobile, con `.container` limitado a --container-max-width-tablet.
+  "Responsive — Spacing"). Breakpoint bajado de 1200px a 1025px
+  (sistema fluido, 2026-09-14): Service Card y Team Card dejaron de
+  tener ancho fijo (20% del carrusel / máx. 488px con flex fluido), así
+  que ya entran sin romper la paridad con el Figma. Entre 768px y
+  1024px el layout sigue siendo el mobile, con `.container` limitado a
+  --container-max-width-tablet.
+
+  Tipografía fluida (2026-09-14): los tokens --font-size-* usan
+  clamp(mínimo, preferido, máximo) en vez de un valor fijo con override
+  por breakpoint. El mínimo es el valor mobile de este catálogo (390px,
+  ya con la corrección de legibilidad de "Mobile propuesto" donde
+  aplica) y el máximo es el valor Desktop de design-tokens.md (Figma a
+  1920px), ambos en rem para respetar el tamaño de fuente del
+  navegador. El preferido interpola en vw entre esos dos anchos, así
+  que no hace falta un override de font-size dentro del media query
+  desktop — los que quedaban ahí se eliminaron. Los tokens sin par
+  desktop documentado (los "-mobile", instancia única) siguen fijos.
 
   Normalizaciones aplicadas (docs/ESTADO.md):
   - #060606 se unifica con #000000: en todo este catálogo "negro" es
@@ -85,41 +97,43 @@
   --leading-body-lg-alt-3: 1.461; /* 146.1%, único caso no-100% sin variable propia */
 
   /* ============================================
-     TIPOGRAFÍA — Tamaños de fuente (mobile primero)
-     Los estilos marcados "ilegible" en CLAUDE.md usan la columna
-     "Mobile propuesto" de elementor-setup.md, no el crudo del Figma.
+     TIPOGRAFÍA — Tamaños de fuente (clamp fluido)
+     clamp(mínimo mobile 390px, preferido en vw, máximo Figma 1920px).
+     Los mínimos con corrección de legibilidad ("Mobile propuesto" de
+     elementor-setup.md) siguen marcados como tal — el crudo Figma que
+     reemplazan queda documentado igual que antes.
      ============================================ */
-  --font-size-display-xl: 25px; /* GOOD BRUSH, ya legible en mobile, sin cambio */
-  --font-size-heading-h1: 25px;
-  --font-size-heading-h1-alt-2: 55px;
-  --font-size-heading-h2: 45px; /* normalización "Nosotros" incluida: título Experience usa este mismo tamaño en ambos breakpoints salvo lo indicado abajo en desktop */
-  --font-size-heading-h2-alt-2: 32px;
-  --font-size-heading-h3: 16px;
-  --font-size-heading-h3-alt-2: 27px;
-  --font-size-body-lg: 16px; /* Mobile propuesto (crudo Figma: 10px, ilegible) */
-  --font-size-body-lg-alt-2: 23px;
-  --font-size-body-lg-alt-3: 23px;
-  --font-size-body-md: 16px; /* Mobile propuesto (crudo Figma: 9px, ilegible) */
-  --font-size-body-md-alt-2: 16px;
-  --font-size-body-sm: 16px; /* Mobile propuesto (crudo Figma: 8px, ilegible) */
-  --font-size-label-lg: 17px;
-  --font-size-label-lg-alt-2: 16px;
-  --font-size-label-md: 13px;
-  --font-size-button-md: 14px; /* Mobile propuesto (crudo Figma: 11px, ilegible). Aplica a "Agendar" y a "Reserva Online" — confirmado por el cliente del diseño (2026-09-11) que ambas quedan al mismo tamaño, pese a que "Reserva Online" tiene su propio crudo Figma de 10px (componentes.md §11) */
-  --font-size-button-md-alt-2: 17px;
+  --font-size-display-xl: clamp(1.5625rem, -0.0784rem + 6.7320vw, 8rem); /* GOOD BRUSH, mobile ya legible sin cambio (25px) */
+  --font-size-heading-h1: clamp(1.5625rem, 1.1324rem + 1.7647vw, 3.25rem);
+  --font-size-heading-h1-alt-2: clamp(3.4375rem, 3.087rem + 1.4379vw, 4.8125rem);
+  --font-size-heading-h2: 2.8125rem; /* 45px en Figma mobile y desktop por igual (normalización "Nosotros" incluida) — sin rango que interpolar, no necesita clamp() */
+  --font-size-heading-h2-alt-2: clamp(2rem, 1.7929rem + 0.8497vw, 2.8125rem);
+  --font-size-heading-h3: clamp(1rem, 0.7132rem + 1.1765vw, 2.125rem);
+  --font-size-heading-h3-alt-2: clamp(1.6875rem, 1.576rem + 0.4575vw, 2.125rem);
+  --font-size-body-lg: clamp(1rem, 0.8725rem + 0.5229vw, 1.5rem); /* mínimo = Mobile propuesto (crudo Figma: 10px, ilegible) */
+  --font-size-body-lg-alt-2: clamp(1.4375rem, 1.3578rem + 0.3268vw, 1.75rem);
+  --font-size-body-lg-alt-3: clamp(1.4375rem, 1.3578rem + 0.3268vw, 1.75rem);
+  --font-size-body-md: clamp(1rem, 0.9363rem + 0.2614vw, 1.25rem); /* mínimo = Mobile propuesto (crudo Figma: 9px, ilegible) */
+  --font-size-body-md-alt-2: clamp(1rem, 0.9363rem + 0.2614vw, 1.25rem);
+  --font-size-body-sm: clamp(1rem, 0.9681rem + 0.1307vw, 1.125rem); /* mínimo = Mobile propuesto (crudo Figma: 8px, ilegible) */
+  --font-size-label-lg: clamp(1.0625rem, 0.951rem + 0.4575vw, 1.5rem);
+  --font-size-label-lg-alt-2: clamp(1rem, 0.7451rem + 1.0458vw, 2rem);
+  --font-size-label-md: clamp(0.8125rem, 0.701rem + 0.4575vw, 1.25rem);
+  --font-size-button-md: clamp(0.875rem, 0.7635rem + 0.4575vw, 1.3125rem); /* mínimo = Mobile propuesto (crudo Figma: 11px, ilegible). Aplica a "Agendar" y a "Reserva Online" — confirmado por el cliente del diseño (2026-09-11) que ambas quedan al mismo tamaño, pese a que "Reserva Online" tiene su propio crudo Figma de 10px (componentes.md §11) */
+  --font-size-button-md-alt-2: clamp(1.0625rem, 0.9988rem + 0.2614vw, 1.3125rem);
 
   /* Estilos sin catalogar en los 18 de design-tokens.md, documentados
-     en componentes.md §11. Tamaño mobile deducido: no están en la
-     tabla de elementor-setup.md, así que no hay columna "Mobile
-     propuesto" propia — se aplicó el mínimo genérico que
-     elementor-setup.md fija para su misma categoría ("...sube esos
-     casos a un mínimo usable: 16px body, 14px button, 12px label").
-     Quedan marcados como valor deducido en el resumen final. */
-  --font-size-label-md-alt-faq: 12px; /* FAQ desktop: 21px (ver bloque @media). Crudo mobile Figma: 10px */
-  --font-size-label-md-alt-2-faq-mobile: 12px; /* estilo interno solo-mobile de la pregunta del FAQ, crudo Figma: 10px */
-  --font-size-nav-link: 16px; /* nav de Header/Footer, crudo mobile Figma (footer): 10px, tratado como categoría body */
-  --font-size-footer-schedule-title: 16px; /* "Horario Disponible:", crudo mobile Figma: 11px */
-  --font-size-footer-schedule-value: 16px; /* horarios en peso Light, crudo mobile Figma: 10px */
+     en componentes.md §11. Mínimo deducido: no están en la tabla de
+     elementor-setup.md, así que no hay columna "Mobile propuesto"
+     propia — se aplicó el mínimo genérico que elementor-setup.md fija
+     para su misma categoría ("...sube esos casos a un mínimo usable:
+     16px body, 14px button, 12px label"). Quedan marcados como valor
+     deducido en el resumen final. */
+  --font-size-label-md-alt-faq: clamp(0.75rem, 0.6066rem + 0.5882vw, 1.3125rem); /* FAQ. Crudo mobile Figma: 10px */
+  --font-size-label-md-alt-2-faq-mobile: 12px; /* estilo interno solo-mobile de la pregunta del FAQ, crudo Figma: 10px — instancia única sin par desktop, sigue fijo */
+  --font-size-nav-link: clamp(1rem, 0.8088rem + 0.7843vw, 1.75rem); /* nav de Header/Footer, crudo mobile Figma (footer): 10px, tratado como categoría body */
+  --font-size-footer-schedule-title: clamp(1rem, 0.8088rem + 0.7843vw, 1.75rem); /* "Horario Disponible:", crudo mobile Figma: 11px */
+  --font-size-footer-schedule-value: clamp(1rem, 0.8725rem + 0.5229vw, 1.5rem); /* horarios en peso Light, crudo mobile Figma: 10px */
 
   /* Valores literales reales de instancia (no catalogados) — ver
      componentes.md §11. Confirmados por el cliente del diseño
@@ -182,7 +196,7 @@
      ============================================ */
   --container-max-width: 1560px;
   --container-padding-inline: var(--spacing-20);
-  /* Rango 768px–1199px (layout mobile, pero .container centrado y
+  /* Rango 768px–1024px (layout mobile, pero .container centrado y
      acotado): valor pedido por Johan (2026-09-11), sin fuente en el
      Figma — es un ancho de transición, no un dato de diseño. */
   --container-max-width-tablet: 600px;
@@ -213,22 +227,36 @@
 
   /* ============================================
      COMPONENTE — Hero (docs/home-estructura.md §2)
+     Alto y foto fluidos (2026-09-14, ver nota de tipografía fluida
+     arriba): --hero-min-height interpola entre el alto mobile (508px a
+     390px) y el desktop (810px a 1920px) con el mismo criterio que un
+     font-size fluido — sin override de breakpoint. En mobile el propio
+     `.hero` usa --hero-aspect-ratio-mobile (proporción del frame
+     390×508 de Figma) en vez de vh, para no depender del alto de
+     ventana. En desktop la foto dejó de tener ancho fijo (753px): usa
+     --hero-image-width-desktop en % del `.hero` (753/1760, ancho del
+     `.hero` a 1920px con su padding-inline) + --hero-image-aspect-ratio
+     para sacar el alto del ancho — así no se desborda entre 1025 y
+     1920px, y a 1920px calza exacto con Figma (753×708).
      ============================================ */
-  --hero-min-height: 508px;
+  --hero-min-height: clamp(31.75rem, 26.9387rem + 19.7386vw, 50.625rem);
   --hero-content-offset-top-mobile: 198px; /* posición del bloque de texto sobre el fondo, Figma mobile */
-  --hero-image-width-desktop: 753px;
-  --hero-image-height-desktop: 708px;
+  --hero-aspect-ratio-mobile: 390 / 508;
+  --hero-image-width-desktop: 42.7841%; /* = 753px / 1760px (ancho útil del .hero a 1920px, ver arriba) */
+  --hero-image-max-width-desktop: 753px; /* tope: por sobre 1920px de viewport, la foto no crece más allá del valor de Figma */
+  --hero-image-aspect-ratio: 753 / 708;
 
   /* ============================================
      COMPONENTE — Service Card (docs/componentes.md §2)
-     Mobile: alto común a las 2 variantes documentadas (Corte/Barba,
-     534px) — el ancho real difiere entre instancias (339 vs 356) por
-     una inconsistencia del Figma; en el sitio la tarjeta mobile va a
-     ancho completo del carrusel, no a un ancho fijo.
+     Fluida (2026-09-14): ancho 100% en mobile / 20% del carrusel en
+     desktop (4 visibles: 4×20% + 3×5% de gap = 95%), con la altura
+     saliendo de --service-card-aspect-ratio (350/551, proporción de
+     Figma) en vez de un alto fijo por breakpoint — mismo aspect-ratio
+     en mobile y desktop, ver componentes.md §2.
      ============================================ */
-  --service-card-height-mobile: 534px;
-  --service-card-width-desktop: 350px;
-  --service-card-height-desktop: 551px;
+  --service-card-aspect-ratio: 350 / 551;
+  --service-card-width-desktop: 20%;
+  --service-card-gap-desktop: 5%; /* spaceBetween de Swiper, ver assets/js/services-carousel.js */
   --line-height-service-card-description-mobile: 17px; /* desviación documentada: no coincide con --line-height-body-sm */
 
   /* ============================================
@@ -238,27 +266,40 @@
      confirmar. El aspect-ratio tampoco está documentado — se dedujo
      para que 2 filas + gap calcen con el alto de sección documentado
      (1207px desktop); confirmar visualmente contra el Figma.
+     Anchos de columna en % (2026-09-14): el ancho fijo (400px/325px)
+     desbordaba el contenedor entre 1025 y 1920px, cuando el `.container`
+     (1560px máx.) todavía no llega a su tope. Expresados como % de
+     --container-max-width, calzan exacto con Figma a 1920px (400/325)
+     y se achican en proporción por debajo.
      ============================================ */
-  --gallery-item-width-wide-desktop: 400px;
-  --gallery-item-width-narrow-desktop: 325px;
+  --gallery-item-width-wide-desktop: 25.641%; /* = 400px / 1560px (--container-max-width) */
+  --gallery-item-width-narrow-desktop: 20.833%; /* = 325px / 1560px */
   --gallery-item-gap: var(--spacing-16);
   --gallery-item-aspect-ratio: 4 / 5;
 
   /* ============================================
      COMPONENTE — Experience / "Nosotros" (docs/home-estructura.md §5)
+     Alto fluido (2026-09-14): mismo criterio que --hero-min-height,
+     interpola entre 461px (390px) y 720px (1920px) — sustituye el
+     override de breakpoint que tenía antes.
      ============================================ */
-  --experience-min-height: 461px;
+  --experience-min-height: clamp(28.8125rem, 24.6863rem + 16.9281vw, 45rem);
 
   /* ============================================
      COMPONENTE — Team Card (docs/componentes.md §3)
      Ancho mobile deliberadamente sin token: la tarjeta va fluida al
      100% (home-estructura.md §6 pide "ancho completo"), no a los
      342px fijos de la instancia de Figma — mismo criterio que Service
-     Card.
+     Card. En desktop --team-card-width-desktop pasó de ancho fijo a
+     tope máximo (flex fluido con shrink, team-card.css): a 1920px la
+     fila de 3 llega justo a ese tope (488px c/u, igual que Figma), y
+     se achica sin desbordar el `.container` entre 1025 y esa medida.
+     La foto usa --team-photo-aspect-ratio (488/704, proporción de
+     Figma) en vez de alto fijo por breakpoint, para que el alto salga
+     del ancho real de la tarjeta y no de una unidad de viewport.
      ============================================ */
   --team-card-width-desktop: 488px;
-  --team-photo-height-desktop: 704px;
-  --team-photo-height-mobile: 492px; /* rango real 492-493px, componentes.md §3 */
+  --team-photo-aspect-ratio: 488 / 704;
   --team-icon-size-desktop: 60px;
   --team-icon-width-mobile: 29px;
   --team-icon-height-mobile: 30px;
@@ -296,34 +337,16 @@
 }
 
 /* ============================================
-   DESKTOP (≥1200px) — overrides documentados
+   DESKTOP (≥1025px) — overrides documentados
+   Los font-size ya no se overridean acá: son clamp() fluidos (ver
+   bloque de tipografía arriba). --hero-min-height y
+   --experience-min-height tampoco: son clamp() fluidos. Lo que queda
+   son line-heights en px fijo (no forman parte del alcance de
+   tipografía fluida, ver nota arriba) y medidas de componente que sí
+   cambian en un salto neto entre mobile y desktop, no en curva.
    ============================================ */
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
   :root {
-    --font-size-display-xl: 128px;
-    --font-size-heading-h1: 52px;
-    --font-size-heading-h1-alt-2: 77px;
-    --font-size-heading-h2: 45px;
-    --font-size-heading-h2-alt-2: 45px;
-    --font-size-heading-h3: 34px;
-    --font-size-heading-h3-alt-2: 34px;
-    --font-size-body-lg: 24px;
-    --font-size-body-lg-alt-2: 28px;
-    --font-size-body-lg-alt-3: 28px;
-    --font-size-body-md: 20px;
-    --font-size-body-md-alt-2: 20px;
-    --font-size-body-sm: 18px;
-    --font-size-label-lg: 24px;
-    --font-size-label-lg-alt-2: 32px;
-    --font-size-label-md: 20px;
-    --font-size-button-md: 21px;
-    --font-size-button-md-alt-2: 21px;
-
-    --font-size-label-md-alt-faq: 21px;
-    --font-size-nav-link: 28px;
-    --font-size-footer-schedule-title: 28px;
-    --font-size-footer-schedule-value: 24px;
-
     --line-height-heading-h3: 30px;
     --line-height-heading-h3-alt-2: 51px;
     --line-height-body-md: 30px;
@@ -336,7 +359,5 @@
     --header-logo-height: 160px;
 
     --button-height: 61px;
-    --hero-min-height: 810px;
-    --experience-min-height: 720px;
   }
 }

@@ -7,10 +7,13 @@
   corregido por la diseñadora (ver "Decisiones confirmadas" del
   documento fuente) — no se implementa nada de scroll acá.
 
-  Ancho de columnas alternado 400/325px: documentado tal cual para
-  desktop. Para mobile (2 columnas) no hay medida literal en Figma —
-  se usa la misma proporción 400:325 como flex-grow, fluida al ancho
-  del contenedor, en vez de inventar un px fijo.
+  Ancho de columnas alternado 400/325px en Figma: en desktop se expresa
+  como % de --container-max-width (2026-09-14, ver tokens.css) en vez
+  de flex-basis fijo — el valor fijo desbordaba el `.container` entre
+  1025 y 1920px, cuando este último todavía no llega a su ancho
+  máximo. Para mobile (2 columnas) no hay medida literal en Figma — se
+  usa la misma proporción 400:325 como flex-grow, fluida al ancho del
+  contenedor, en vez de inventar un px fijo.
 
   Estructura duplicada (grid--mobile / grid--desktop): el "patrón
   escalonado" alterna qué columna es ancha en cada fila, y desktop
@@ -86,7 +89,7 @@
   flex-grow: 325;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
   .gallery__grid--mobile {
     display: none;
   }
@@ -97,6 +100,7 @@
 
   .gallery__item {
     flex-grow: 0;
+    flex-shrink: 1;
   }
 
   .gallery__item--wide {

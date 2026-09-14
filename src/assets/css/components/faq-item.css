@@ -92,7 +92,7 @@
   color: var(--color-text-default);
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
   /* En desktop el espaciado lo da el gap de la grilla (faq.css), no el
      margin mobile entre ítems apilados. */
   .faq-item + .faq-item {

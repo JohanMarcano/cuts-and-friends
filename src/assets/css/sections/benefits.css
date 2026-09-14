@@ -30,7 +30,7 @@
   gap: var(--benefit-grid-gap-mobile);
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
   .benefits__list {
     grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-48);

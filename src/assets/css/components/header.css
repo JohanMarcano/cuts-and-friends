@@ -7,7 +7,7 @@
   hamburguesa. El menú (Galería/Barberos/Blog) vive en el <dialog>
   de pantalla completa, no en este bloque.
 
-  Desktop (≥1200px): el header vuelve al flujo normal, antes del Hero,
+  Desktop (≥1025px): el header vuelve al flujo normal, antes del Hero,
   con dos franjas: barra superior en bg/muted y debajo el nav con el
   logo centrado encima.
 */
@@ -204,9 +204,9 @@
 }
 
 /* ============================================
-   DESKTOP (≥1200px)
+   DESKTOP (≥1025px)
    ============================================ */
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
   .site-header {
     position: static;
     background-color: transparent;

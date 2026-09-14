@@ -40,7 +40,7 @@
   outline-offset: 2px;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
   .btn {
     padding-inline: var(--spacing-48);
   }

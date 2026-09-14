@@ -7,12 +7,20 @@
   alineados a la izquierda sobre la imagen. La palabra "BARBERÍA" se
   omite (confirmado). El titular es el párrafo de pesos mixtos.
 
-  Desktop (≥1200px): 2 columnas — foto a la izquierda, y a la derecha
+  Desktop (≥1025px): 2 columnas — foto a la izquierda, y a la derecha
   el apilado "BARBERÍA" → titular → CTA.
+
+  Alto y foto fluidos (2026-09-14, ver tokens.css): en mobile el propio
+  `.hero` usa aspect-ratio (proporción del frame de Figma) en vez de un
+  alto fijo o vh, para no depender del alto de la ventana. En desktop
+  se resetea el aspect-ratio del `.hero` (el alto ahí lo da la foto +
+  --hero-min-height como piso) y la foto pasa a ancho fluido con su
+  propio aspect-ratio.
 */
 
 .hero {
   position: relative;
+  aspect-ratio: var(--hero-aspect-ratio-mobile);
   min-height: var(--hero-min-height);
   overflow: hidden;
 }
@@ -60,8 +68,9 @@
   display: none;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
   .hero {
+    aspect-ratio: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -73,7 +82,9 @@
     position: static;
     flex: none;
     width: var(--hero-image-width-desktop);
-    height: var(--hero-image-height-desktop);
+    max-width: var(--hero-image-max-width-desktop);
+    aspect-ratio: var(--hero-image-aspect-ratio);
+    height: auto;
   }
 
   .hero__content {

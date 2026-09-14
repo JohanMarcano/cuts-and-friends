@@ -4,9 +4,12 @@
 
   Mobile: ancho fluido al 100% (home-estructura.md §6 pide "ancho
   completo"), no los 342px fijos de la instancia de Figma — mismo
-  criterio ya aplicado a Service Card. Solo el alto de la foto está
-  token-izado (--team-photo-height-mobile); el resto de la tarjeta
-  crece con el contenido.
+  criterio ya aplicado a Service Card. El alto de la foto sale de
+  --team-photo-aspect-ratio (488/704, proporción de Figma) aplicado al
+  ancho real de la tarjeta, no de un alto fijo por breakpoint ni de vh
+  (CLAUDE.md, 2026-09-14: vh deforma la foto en pantallas bajas y la
+  hace saltar en mobile cuando aparece/desaparece la barra del
+  navegador) — el resto de la tarjeta crece con el contenido.
 
   La foto y el ícono de redes son placeholders (sin asset todavía, ver
   TODO en el HTML) — nunca <img> a un archivo inexistente.
@@ -21,7 +24,7 @@
 
 .team-card__photo {
   width: 100%;
-  height: var(--team-photo-height-mobile);
+  aspect-ratio: var(--team-photo-aspect-ratio);
   background-color: var(--color-bg-muted); /* TODO: foto del barbero pendiente */
 }
 
@@ -60,13 +63,14 @@
   outline-offset: 2px;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
   .team-card {
-    width: var(--team-card-width-desktop);
-  }
-
-  .team-card__photo {
-    height: var(--team-photo-height-desktop);
+    /* Tope de ancho, no ancho fijo: con flex-shrink (team.css) la
+       tarjeta se achica antes de desbordar el .container entre 1025 y
+       1920px, y a 1920px llega justo a este tope (igual que Figma). */
+    flex: 0 1 var(--team-card-width-desktop);
+    max-width: var(--team-card-width-desktop);
+    width: auto;
   }
 
   .team-card__name {

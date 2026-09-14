@@ -19,12 +19,17 @@
   El degradado usa --color-overlay-image, ya declarado en
   design-tokens.md pero huérfano hasta ahora (componentes.md §11 lo
   marcaba como pendiente de confirmar).
+
+  Card fluida (2026-09-14): el alto ya no es un valor fijo por
+  breakpoint, sale de --service-card-aspect-ratio (350/551, proporción
+  de Figma) aplicado al ancho real de la tarjeta — 100% en mobile, 20%
+  del carrusel en desktop (ver services.css y tokens.css).
 */
 
 .service-card {
   position: relative;
   width: 100%;
-  height: var(--service-card-height-mobile);
+  aspect-ratio: var(--service-card-aspect-ratio);
   border-radius: var(--radius-md);
   overflow: hidden;
 }
@@ -84,10 +89,9 @@
   max-width: 280px;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
   .service-card {
-    width: var(--service-card-width-desktop);
-    height: var(--service-card-height-desktop);
+    width: 100%;
     flex: none;
   }
 

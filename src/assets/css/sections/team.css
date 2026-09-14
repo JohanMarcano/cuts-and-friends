@@ -30,7 +30,7 @@
   gap: var(--spacing-80);
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
   .team__list {
     flex-direction: row;
     justify-content: center;

@@ -93,6 +93,13 @@ body {
   color: var(--color-text-default);
   background-color: var(--color-bg-default);
   letter-spacing: var(--tracking-none);
+  /* overflow-wrap hereda a todo el texto del sitio: a los anchos más
+     angostos (320-390px) una sola palabra larga en mayúsculas con
+     tracking ancho (heading/h2 de los títulos de sección, 45px fijo
+     tanto en mobile como desktop por diseño) puede no entrar en el
+     `.container` y desbordar horizontalmente la página — se corta la
+     palabra antes que eso, en vez de dejarla desbordar. */
+  overflow-wrap: break-word;
 }
 
 /* ============================================
@@ -109,10 +116,10 @@ body {
   padding-inline: var(--container-padding-inline);
 }
 
-/* 768px–1199px: layout todavía mobile, pero el .container se acota a
+/* 768px–1024px: layout todavía mobile, pero el .container se acota a
    un ancho de transición y se centra (ver tokens.css,
    --container-max-width-tablet). */
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .container {
     max-width: var(--container-max-width-tablet);
   }
