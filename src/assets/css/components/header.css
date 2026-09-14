@@ -2,10 +2,13 @@
   Header — Cuts And Friends
   Fuente: docs/componentes.md §9 (Header) y docs/home-estructura.md §1.
 
-  Mobile (base): el header flota transparente y superpuesto al Hero
-  (ambos arrancan en y=0), con la franja de contacto + logo + botón
-  hamburguesa. El menú (Galería/Barberos/Blog) vive en el <dialog>
-  de pantalla completa, no en este bloque.
+  Mobile (base): el header flota superpuesto al Hero (ambos arrancan
+  en y=0), con la franja de contacto + logo + botón hamburguesa. Fondo
+  negro sólido en toda la barra (corregido 2026-09-14: era transparente
+  y el texto blanco se perdía sobre la foto del Hero — en el Figma
+  mobile ambas franjas van con fondo negro, ver "Landing / Mobile" §1).
+  El menú (Galería/Barberos/Blog) vive en el <dialog> de pantalla
+  completa, no en este bloque.
 
   Desktop (≥1025px): el header vuelve al flujo normal, antes del Hero,
   con dos franjas: barra superior en bg/muted y debajo el nav con el
@@ -23,20 +26,18 @@
   /* Sin escala de z-index documentada: valor mínimo para quedar sobre
      el Hero (fondo de sección, sin overlays propios). */
   z-index: 40;
-  background-color: transparent;
+  background-color: var(--color-bg-default);
 }
 
 .site-header__topbar-inner {
   display: flex;
-  align-items: center;
+  /* flex-start, no center (corregido 2026-09-14): la dirección puede
+     envolver a 2 líneas en mobile (ver .site-header__address) — con
+     center el teléfono quedaba flotando a media altura del bloque. */
+  align-items: flex-start;
   justify-content: space-between;
   column-gap: var(--spacing-16);
   padding-block: var(--spacing-8);
-  /* Franja de contacto: una sola línea, contenida dentro de su propio
-     alto — no debe crecer ni "competir" visualmente con el resto del
-     header (componentes.md §9: body/lg en desktop, mínimo legible de
-     "Mobile propuesto" en mobile). */
-  overflow: hidden;
 }
 
 .site-header__address,
@@ -47,18 +48,22 @@
   line-height: var(--leading-100);
   letter-spacing: var(--tracking-none);
   color: var(--color-text-default);
-  white-space: nowrap;
 }
 
 .site-header__address {
   flex: 1 1 auto;
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* Corregido 2026-09-14: era una sola línea con ellipsis y la
+     dirección quedaba cortada — al tamaño mínimo legible (16px,
+     "Mobile propuesto") no entra completa en una línea junto al
+     teléfono dentro de 390px. Se deja envolver en 2 líneas en vez de
+     truncarla. */
+  white-space: normal;
 }
 
 .site-header__phone {
   flex: 0 0 auto;
+  white-space: nowrap;
   text-decoration: none;
 }
 

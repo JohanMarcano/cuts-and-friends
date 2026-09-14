@@ -26,13 +26,17 @@
 .benefits__list {
   margin-block-start: var(--spacing-32);
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* minmax(0, 1fr), no 1fr a secas: una palabra larga sin espacios en
+     el título/descripción de una tarjeta (min-content) empujaba esa
+     columna más ancha que su 50% y desbordaba el viewport en 320-360px
+     ("grid blowout" — corregido 2026-09-14). */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--benefit-grid-gap-mobile);
 }
 
 @media (min-width: 1025px) {
   .benefits__list {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--spacing-48);
   }
 }

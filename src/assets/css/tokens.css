@@ -30,8 +30,14 @@
     un solo valor, --color-black, sin variante secundaria.
   - FAQ (pregunta del acordeón) a 21px desktop: ya es el valor nativo
     de --font-size-label-md-alt-faq, documentado en componentes.md §5.
-  - Encabezado "Nosotros" a 45px: coincide con --font-size-heading-h2
-    desktop, que es el estilo que usa la sección Experience.
+  - Encabezado "Nosotros" a 45px **en todo breakpoint, mobile incluido**
+    (2026-09-11): coincide con --font-size-heading-h2 desktop, pero es
+    una excepción puntual de esa sección — no de la escala heading/h2
+    en general (2026-09-14: heading/h2 se hizo fluido igual que el
+    resto de la tipografía, ver --font-size-heading-h2 más abajo; el
+    caso de Experience sigue fijo vía --font-size-heading-h2-experience,
+    que es el mismo valor 45px de siempre, solo que ya no comparte
+    token con Servicios/Nuestros artistas/Preguntas frecuentes).
   - El radio literal de 30.5px (botón desktop, botón de Team Card) y
     el de 35.7px (botón "Reserva Online" del FAQ desktop) se resuelven
     como --radius-full: visualmente son un pill sobre una caja de
@@ -106,7 +112,8 @@
   --font-size-display-xl: clamp(1.5625rem, -0.0784rem + 6.7320vw, 8rem); /* GOOD BRUSH, mobile ya legible sin cambio (25px) */
   --font-size-heading-h1: clamp(1.5625rem, 1.1324rem + 1.7647vw, 3.25rem);
   --font-size-heading-h1-alt-2: clamp(3.4375rem, 3.087rem + 1.4379vw, 4.8125rem);
-  --font-size-heading-h2: 2.8125rem; /* 45px en Figma mobile y desktop por igual (normalización "Nosotros" incluida) — sin rango que interpolar, no necesita clamp() */
+  --font-size-heading-h2: clamp(1.25rem, 0.8517rem + 1.6340vw, 2.8125rem); /* mínimo = crudo Figma mobile (20px), ya legible sin "Mobile propuesto" (design-tokens.md, tabla Responsive). Usan este token: Servicios (badge), Nuestros artistas, Preguntas frecuentes. Corregido 2026-09-14: estaba fijo en 45px (bug — desbordaba el badge de Servicios en mobile, ver ESTADO.md), Experience/"Nosotros" queda aparte en --font-size-heading-h2-experience por ser una excepción confirmada */
+  --font-size-heading-h2-experience: 2.8125rem; /* 45px fijo mobile y desktop, excepción confirmada solo para el título "Nosotros" (normalización 2026-09-11, ver nota arriba) — no es un clamp fluido a propósito */
   --font-size-heading-h2-alt-2: clamp(2rem, 1.7929rem + 0.8497vw, 2.8125rem);
   --font-size-heading-h3: clamp(1rem, 0.7132rem + 1.1765vw, 2.125rem);
   --font-size-heading-h3-alt-2: clamp(1.6875rem, 1.576rem + 0.4575vw, 2.125rem);

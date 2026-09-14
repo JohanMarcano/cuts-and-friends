@@ -201,3 +201,57 @@ flotante, todo sin errores de consola. Pendiente: assets reales (fotos,
 logo, íconos), copy definitivo de Benefits/FAQ/Gallery/Experience
 (hoy son placeholder), y varias decisiones de diseño no confirmadas
 (ver detalle entregado a Johan en el chat de la sesión).
+
+**2026-09-14 (2)** — Comparado el mobile contra el frame "Landing /
+Mobile" del Figma (MCP) y corregidos los hallazgos:
+- Header mobile: fondo negro sólido en toda la barra (antes
+  transparente, el texto blanco se perdía sobre la foto del Hero).
+  Dirección: pasa de 1 línea con ellipsis (cortada) a envolver en
+  hasta 2-3 líneas — al tamaño mínimo legible (16px) no entra completa
+  en una línea junto al teléfono dentro de 390px; se priorizó
+  legibilidad sobre una sola línea.
+- Bug real de `--font-size-heading-h2`: estaba fijo en 45px en mobile y
+  desktop por igual (arrastrado de la normalización puntual de
+  "Nosotros"), cuando el crudo Figma mobile de heading/h2 es 20px (ya
+  legible, sin necesitar "Mobile propuesto"). Eso hacía que el badge de
+  "SERVICIOS" no entrara en una línea a 390px y el badge (ancho al
+  contenido) se expandiera al 100% de la sección. Corregido: el token
+  ahora es un clamp fluido 20px→45px (390→1920px), y el caso de
+  Experience/"Nosotros" (normalización confirmada 2026-09-11: 45px fijo
+  en todo breakpoint) se separó a su propio token
+  `--font-size-heading-h2-experience` para no perder esa excepción.
+  Efecto secundario esperado: los títulos de Servicios/Nuestros
+  artistas/Preguntas frecuentes en mobile ahora son más chicos (20px en
+  vez de 45px), más fieles al Figma — Experience sigue en 45px fijo y
+  por eso ahora es el único que envuelve a 2 líneas en 320-360px
+  ("NOSOTR/OS"), tradeoff ya existente de esa excepción, no algo nuevo.
+- Hero mobile: título, párrafo intro de Services y botón Agendar ya
+  estaban en su mínimo correcto ("Mobile propuesto": 25px/16px/14px) —
+  no se tocaron.
+- Gap entre el bloque de texto del Hero y el botón Agendar: estaba en
+  `--spacing-120` (copiado del top del botón en Figma, 320px, sin
+  restar el alto del bloque de texto) en vez de los ~23px reales.
+  Corregido a `--spacing-24`. El offset superior (198px) ya era
+  correcto.
+- Alto del Hero mobile: `--hero-min-height` se aplicaba también en
+  mobile (pensado solo para el piso desktop). Su extremo inferior
+  (508px) es más alto que el que da el aspect-ratio bajo 390px de
+  viewport, y un elemento no-reemplazado con aspect-ratio + esa altura
+  forzada recalcula el ANCHO para mantener la proporción — el `.hero`
+  quedaba fijo en 390px de ancho aunque el viewport fuera 320-375px,
+  desbordando la página horizontalmente. Corregido: `min-height` se
+  movió al media query desktop (`≥1025px`), donde sí corresponde.
+- De paso, mismo tipo de bug de desborde real encontrado en
+  `.benefits__list` (`grid-template-columns: repeat(2, 1fr)`): una
+  palabra larga sin espacios en una Benefit Card empujaba esa columna
+  más ancha que su 50% ("grid blowout"), desbordando ~3px a 320px.
+  Corregido a `repeat(2, minmax(0, 1fr))`.
+- Verificado sin overflow horizontal a 320/360/390/430px (medido por
+  script, no solo visual) tras los cambios de arriba.
+- Logo del header: sacado `loading="lazy"` (es above-the-fold).
+- Service Card 5-7 (sin foto) comentadas en el HTML con nota para
+  reactivar cuando lleguen las fotos — el carrusel queda con las 4
+  completas.
+- Agregado `icono-horario.svg` junto a "Horario Disponible:" del
+  footer, mismo patrón que los demás íconos de contacto (10px mobile /
+  32px desktop, tokens ya existentes).

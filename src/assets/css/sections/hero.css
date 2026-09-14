@@ -16,12 +16,22 @@
   se resetea el aspect-ratio del `.hero` (el alto ahí lo da la foto +
   --hero-min-height como piso) y la foto pasa a ancho fluido con su
   propio aspect-ratio.
+
+  --hero-min-height NO se aplica en mobile (corregido 2026-09-14): es
+  un piso pensado para el rango desktop (interpola hacia 810px a
+  1920px). Aplicado también en mobile, su extremo inferior (508px,
+  clamp() no puede bajar de su propio mínimo) le ganaba al alto que
+  daría el aspect-ratio en viewports angostos (320-375px) — como
+  aspect-ratio en un elemento no-reemplazado recalcula el ANCHO a
+  partir de esa altura más alta para mantener la proporción, el `.hero`
+  terminaba forzado a 390px de ancho aunque el viewport fuera más
+  angosto, desbordando la página horizontalmente. Ver bug real
+  reproducido a 320/360px, ESTADO.md.
 */
 
 .hero {
   position: relative;
   aspect-ratio: var(--hero-aspect-ratio-mobile);
-  min-height: var(--hero-min-height);
   overflow: hidden;
 }
 
@@ -43,7 +53,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--spacing-120);
+  /* Corregido 2026-09-14: era --spacing-120, copiado por error de la
+     posición del botón en Figma (top 320px) sin restar el alto del
+     propio bloque de texto (99px) — el gap real es de ~23px
+     (320 - 198 - 99), ver Figma "Landing / Mobile", Hero. */
+  gap: var(--spacing-24);
   padding-inline: var(--container-padding-inline);
   padding-block-start: var(--hero-content-offset-top-mobile);
 }
@@ -77,6 +91,7 @@
 @media (min-width: 1025px) {
   .hero {
     aspect-ratio: auto;
+    min-height: var(--hero-min-height);
     display: flex;
     align-items: center;
     justify-content: space-between;

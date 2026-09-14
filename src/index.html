@@ -43,7 +43,7 @@
     <div class="site-header__nav-row">
       <div class="container site-header__nav-row-inner">
         <a class="site-header__logo" href="/" aria-label="Cuts And Friends — Inicio">
-          <img class="site-header__logo-placeholder" src="assets/img/iconos/Logo.svg" alt="" width="154" height="160" loading="lazy">
+          <img class="site-header__logo-placeholder" src="assets/img/iconos/Logo.svg" alt="" width="154" height="160">
         </a>
 
         <nav class="site-header__nav" aria-label="Principal">
@@ -186,11 +186,15 @@
             </div>
 
             <!-- Tarjetas 5-7: la barbería ofrece 7 servicios, el Figma solo
-                 documenta 4 como ejemplo (ver CLAUDE.md). TODO: copy real
-                 pendiente, título y descripción son placeholder. -->
+                 documenta 4 como ejemplo (ver CLAUDE.md). Ocultas
+                 2026-09-14 hasta tener las fotos reales (no hay asset ni
+                 copy final) — el carrusel queda con las 4 tarjetas
+                 completas. Reactivar (sacar del comentario y agregar la
+                 foto real en .service-card__media) apenas lleguen.
+
             <div class="swiper-slide">
               <article class="service-card">
-                <div class="service-card__media" aria-hidden="true"><!-- TODO: foto pendiente --></div>
+                <div class="service-card__media" aria-hidden="true"></div>
                 <div class="service-card__body">
                   <h3 class="service-card__title">Servicio 5</h3>
                   <p class="service-card__description">Descripción del servicio a confirmar con el cliente.</p>
@@ -200,7 +204,7 @@
 
             <div class="swiper-slide">
               <article class="service-card">
-                <div class="service-card__media" aria-hidden="true"><!-- TODO: foto pendiente --></div>
+                <div class="service-card__media" aria-hidden="true"></div>
                 <div class="service-card__body">
                   <h3 class="service-card__title">Servicio 6</h3>
                   <p class="service-card__description">Descripción del servicio a confirmar con el cliente.</p>
@@ -210,13 +214,14 @@
 
             <div class="swiper-slide">
               <article class="service-card">
-                <div class="service-card__media" aria-hidden="true"><!-- TODO: foto pendiente --></div>
+                <div class="service-card__media" aria-hidden="true"></div>
                 <div class="service-card__body">
                   <h3 class="service-card__title">Servicio 7</h3>
                   <p class="service-card__description">Descripción del servicio a confirmar con el cliente.</p>
                 </div>
               </article>
             </div>
+            -->
           </div>
 
           <div class="swiper-scrollbar"></div>
@@ -437,7 +442,7 @@
       <div class="site-footer__info">
         <p class="site-footer__address">Av. Apoquindo 6314, of. 302, Las Condes, Santiago</p>
         <div class="site-footer__schedule">
-          <p class="site-footer__schedule-title">Horario Disponible:</p>
+          <p class="site-footer__schedule-title"><img class="site-footer__schedule-icon" src="assets/img/iconos/icono-horario.svg" alt="" width="10" height="10" loading="lazy"> Horario Disponible:</p>
           <p class="site-footer__schedule-value">Lu - Vi: 10am - 7:30pm</p>
           <p class="site-footer__schedule-value">Sá: 11am - 5:30pm</p>
         </div>

@@ -7,10 +7,12 @@
   máscara orgánica — pendiente el asset real en ambos casos, ver TODO.
 
   Título "NOSOTROS" en heading/h2 (docs/ESTADO.md, normalización
-  2026-09-11: "encabezado Nosotros a 45px", ya el valor por defecto de
-  --font-size-heading-h2 en este catálogo) — mismo estilo que usan los
-  demás títulos de sección (Servicios, Nuestros artistas, etc.), por
-  consistencia con lo ya shippeado.
+  2026-09-11: "encabezado Nosotros a 45px", fijo en mobile y desktop).
+  Usa --font-size-heading-h2-experience (tokens.css): es la misma
+  familia visual que los demás títulos de sección (Servicios, Nuestros
+  artistas, etc.), pero con un token propio porque acá el 45px es fijo
+  en todo breakpoint, mientras que el resto de heading/h2 es fluido
+  (corregido 2026-09-14, ver tokens.css).
 */
 
 .experience {
@@ -36,7 +38,7 @@
 
 .experience__title {
   font-family: var(--font-family-base);
-  font-size: var(--font-size-heading-h2);
+  font-size: var(--font-size-heading-h2-experience);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
