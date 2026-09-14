@@ -1,0 +1,38 @@
+/*
+  Benefits ("¿Por qué elegirnos?") — Cuts And Friends
+  Fuente: docs/home-estructura.md §7.
+
+  Desktop: fila de 4, gap uniforme --spacing-48 — los gaps irregulares
+  del Figma (~47/45/23px) son un error de maquetación documentado, no
+  se replican (instrucción explícita del 2026-09-14).
+  Mobile: grid de 2×2 (fila 1 = Personalizada + Profesional, fila 2 =
+  Ambiente Cercano + Tendencias — ya es el orden natural del DOM).
+*/
+
+.benefits {
+  padding-block: var(--spacing-64);
+}
+
+.benefits__title {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-heading-h2);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-default);
+  text-align: center;
+}
+
+.benefits__list {
+  margin-block-start: var(--spacing-32);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--benefit-grid-gap-mobile);
+}
+
+@media (min-width: 1200px) {
+  .benefits__list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-48);
+  }
+}

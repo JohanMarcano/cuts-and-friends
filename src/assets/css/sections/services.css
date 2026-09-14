@@ -8,12 +8,16 @@
 
   Mobile: 1 tarjeta a ancho completo, título con badge bg/accent detrás
   y párrafo introductorio (no existe en desktop).
-  Desktop: 4 slides visibles de 350px, gap ~32px (spacing/32), sobre un
-  total de 7 tarjetas (el Figma solo documenta 4 como ejemplo — la
-  barbería tiene 7 servicios, ver comentario en index.html). Con 7
-  slides y 4 visibles el scrollbar queda con desplazamiento real; el
-  cursor grab/grabbing al arrastrar lo pone el propio bundle de Swiper,
-  no hace falta CSS propio.
+  Desktop: slidesPerView "auto" (services-carousel.js) con la Service
+  Card a 350px fijos (--service-card-width-desktop) y gap 32px
+  (spacing/32), sobre un total de 7 tarjetas (el Figma solo documenta 4
+  como ejemplo — la barbería tiene 7 servicios, ver comentario en
+  index.html). El ancho del .swiper-slide de abajo tiene que coincidir
+  con el de .service-card (service-card.css): con slidesPerView "auto"
+  Swiper mide el slide por su CSS, no por el contenedor — si no
+  coinciden, la tarjeta se desborda del slide y tapa el gap (bug
+  corregido 2026-09-14). El cursor grab/grabbing al arrastrar lo pone
+  el propio bundle de Swiper, no hace falta CSS propio.
 */
 
 .services {
@@ -71,5 +75,12 @@
 
   .services__intro {
     display: none;
+  }
+
+  /* Ancho del slide = ancho real de la Service Card (ver nota arriba).
+     Sin esto, slidesPerView: "auto" mide el slide por su contenido y
+     puede no coincidir 1:1 con la tarjeta. */
+  .services-carousel .swiper-slide {
+    width: var(--service-card-width-desktop);
   }
 }

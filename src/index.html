@@ -14,8 +14,19 @@
   <link rel="stylesheet" href="assets/css/components/button.css">
   <link rel="stylesheet" href="assets/css/components/service-card.css">
   <link rel="stylesheet" href="assets/css/components/agenda-dialog.css">
+  <link rel="stylesheet" href="assets/css/components/logo.css">
+  <link rel="stylesheet" href="assets/css/components/team-card.css">
+  <link rel="stylesheet" href="assets/css/components/benefit-card.css">
+  <link rel="stylesheet" href="assets/css/components/faq-item.css">
+  <link rel="stylesheet" href="assets/css/components/whatsapp-cta.css">
+  <link rel="stylesheet" href="assets/css/components/footer.css">
   <link rel="stylesheet" href="assets/css/sections/hero.css">
   <link rel="stylesheet" href="assets/css/sections/services.css">
+  <link rel="stylesheet" href="assets/css/sections/gallery.css">
+  <link rel="stylesheet" href="assets/css/sections/experience.css">
+  <link rel="stylesheet" href="assets/css/sections/team.css">
+  <link rel="stylesheet" href="assets/css/sections/benefits.css">
+  <link rel="stylesheet" href="assets/css/sections/faq.css">
   <!-- Componentes y secciones se enlazan acá a medida que se maquetan,
        uno por archivo (docs/componentes.md / docs/home-estructura.md) -->
 </head>
@@ -137,6 +148,7 @@
             <div class="swiper-slide">
               <article class="service-card">
                 <div class="service-card__media" aria-hidden="true"><!-- TODO: foto del servicio "Corte" pendiente --></div>
+                <div class="service-card__overlay" aria-hidden="true"></div>
                 <div class="service-card__body">
                   <h3 class="service-card__title">Corte</h3>
                   <p class="service-card__description">Cortes clásicos y modernos, adaptados a tu estilo.</p>
@@ -147,6 +159,7 @@
             <div class="swiper-slide">
               <article class="service-card">
                 <div class="service-card__media" aria-hidden="true"><!-- TODO: foto del servicio "Cabello + Barba" pendiente --></div>
+                <div class="service-card__overlay" aria-hidden="true"></div>
                 <div class="service-card__body">
                   <h3 class="service-card__title">Cabello + Barba</h3>
                   <p class="service-card__description">El combo completo: corte de cabello y barba en una sola sesión.</p>
@@ -157,6 +170,7 @@
             <div class="swiper-slide">
               <article class="service-card">
                 <div class="service-card__media" aria-hidden="true"><!-- TODO: foto del servicio "Barba" pendiente --></div>
+                <div class="service-card__overlay" aria-hidden="true"></div>
                 <div class="service-card__body">
                   <h3 class="service-card__title">Barba</h3>
                   <p class="service-card__description">Diseño y arreglo de barba con precisión y cuidado.</p>
@@ -167,6 +181,7 @@
             <div class="swiper-slide">
               <article class="service-card">
                 <div class="service-card__media" aria-hidden="true"><!-- TODO: foto del servicio "Facial" pendiente --></div>
+                <div class="service-card__overlay" aria-hidden="true"></div>
                 <div class="service-card__body">
                   <h3 class="service-card__title">Facial</h3>
                   <p class="service-card__description">Tratamientos faciales para una piel más limpia y saludable.</p>
@@ -180,6 +195,7 @@
             <div class="swiper-slide">
               <article class="service-card">
                 <div class="service-card__media" aria-hidden="true"><!-- TODO: foto del servicio "Servicio 5" pendiente --></div>
+                <div class="service-card__overlay" aria-hidden="true"></div>
                 <div class="service-card__body">
                   <h3 class="service-card__title">Servicio 5</h3>
                   <p class="service-card__description">Descripción del servicio a confirmar con el cliente.</p>
@@ -190,6 +206,7 @@
             <div class="swiper-slide">
               <article class="service-card">
                 <div class="service-card__media" aria-hidden="true"><!-- TODO: foto del servicio "Servicio 6" pendiente --></div>
+                <div class="service-card__overlay" aria-hidden="true"></div>
                 <div class="service-card__body">
                   <h3 class="service-card__title">Servicio 6</h3>
                   <p class="service-card__description">Descripción del servicio a confirmar con el cliente.</p>
@@ -200,6 +217,7 @@
             <div class="swiper-slide">
               <article class="service-card">
                 <div class="service-card__media" aria-hidden="true"><!-- TODO: foto del servicio "Servicio 7" pendiente --></div>
+                <div class="service-card__overlay" aria-hidden="true"></div>
                 <div class="service-card__body">
                   <h3 class="service-card__title">Servicio 7</h3>
                   <p class="service-card__description">Descripción del servicio a confirmar con el cliente.</p>
@@ -214,14 +232,248 @@
     </section>
 
     <!-- SECCIÓN: Gallery -->
+    <section class="gallery" id="gallery" aria-label="Galería">
+      <div class="container">
+        <div class="gallery__intro">
+          <h2 class="gallery__title">Cortes y estilos</h2>
+          <p class="gallery__subtitle">Inspírate con nuestros cortes exclusivos</p>
+          <!-- Copy no está en docs/home-estructura.md más allá de
+               "párrafo descriptivo": completado a modo de placeholder,
+               a confirmar con el cliente (mismo criterio que
+               services__intro). -->
+          <p class="gallery__description">
+            Una selección de trabajos recientes de nuestro equipo, para que veas el nivel de detalle en cada corte.
+          </p>
+        </div>
+
+        <!-- Mobile (base): 2 columnas × 4 filas. Ver nota de la
+             estructura duplicada en gallery.css. -->
+        <div class="gallery__grid gallery__grid--mobile">
+          <div class="gallery__row">
+            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 1 pendiente --></div>
+            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 2 pendiente --></div>
+          </div>
+          <div class="gallery__row">
+            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 3 pendiente --></div>
+            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 4 pendiente --></div>
+          </div>
+          <div class="gallery__row">
+            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 5 pendiente --></div>
+            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 6 pendiente --></div>
+          </div>
+          <div class="gallery__row">
+            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 7 pendiente --></div>
+            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 8 pendiente --></div>
+          </div>
+        </div>
+
+        <!-- Desktop (≥1200px): 2 filas × 4 columnas -->
+        <div class="gallery__grid gallery__grid--desktop">
+          <div class="gallery__row">
+            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 1 pendiente --></div>
+            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 2 pendiente --></div>
+            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 3 pendiente --></div>
+            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 4 pendiente --></div>
+          </div>
+          <div class="gallery__row">
+            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 5 pendiente --></div>
+            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 6 pendiente --></div>
+            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 7 pendiente --></div>
+            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 8 pendiente --></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SECCIÓN: Experience -->
+    <section class="experience" aria-label="Nosotros">
+      <div class="experience__media" aria-hidden="true"><!-- TODO: imagen de fondo a sangre + máscara orgánica mobile pendientes --></div>
+      <div class="container">
+        <div class="experience__content">
+          <h2 class="experience__title">Nosotros</h2>
+          <p class="experience__subtitle">La barbería donde la excelencia se encuentra con la comodidad</p>
+          <!-- Copy no está en docs/home-estructura.md más allá de
+               "párrafo descriptivo": completado a modo de placeholder,
+               a confirmar con el cliente. -->
+          <p class="experience__description">
+            Un equipo de barberos apasionados, dedicados a ofrecerte una experiencia cómoda y de primer nivel en cada visita.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- SECCIÓN: Team -->
+    <section class="team" id="team" aria-label="Nuestros artistas">
+      <div class="container">
+        <h2 class="team__title">Nuestros artistas</h2>
+
+        <div class="team__list">
+          <article class="team-card">
+            <div class="team-card__photo" aria-hidden="true"><!-- TODO: foto de Miguel Linares pendiente --></div>
+            <h3 class="team-card__name">Miguel Linares</h3>
+            <div class="team-card__actions">
+              <a class="btn" href="https://agendapro.com/iframe/overview/a2bf274c-4983-4407-bc82-c9ba6b6989bf" data-agenda data-track="agenda">Agendar</a>
+              <a class="team-card__social" href="#" aria-disabled="true" aria-label="Instagram de Miguel Linares"><!-- TODO: ícono de Instagram pendiente --></a>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-card__photo" aria-hidden="true"><!-- TODO: foto de Natalia Pino pendiente --></div>
+            <h3 class="team-card__name">Natalia Pino</h3>
+            <div class="team-card__actions">
+              <a class="btn" href="https://agendapro.com/iframe/overview/a2bf274c-4983-4407-bc82-c9ba6b6989bf" data-agenda data-track="agenda">Agendar</a>
+              <a class="team-card__social" href="#" aria-disabled="true" aria-label="Instagram de Natalia Pino"><!-- TODO: ícono de Instagram pendiente --></a>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-card__photo" aria-hidden="true"><!-- TODO: foto de Diego Cignoni pendiente --></div>
+            <h3 class="team-card__name">Diego Cignoni</h3>
+            <div class="team-card__actions">
+              <a class="btn" href="https://agendapro.com/iframe/overview/a2bf274c-4983-4407-bc82-c9ba6b6989bf" data-agenda data-track="agenda">Agendar</a>
+              <a class="team-card__social" href="#" aria-disabled="true" aria-label="Instagram de Diego Cignoni"><!-- TODO: ícono de Instagram pendiente --></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- SECCIÓN: Benefits -->
+    <section class="benefits" aria-label="¿Por qué elegirnos?">
+      <div class="container">
+        <h2 class="benefits__title">¿Por qué elegirnos?</h2>
+
+        <!-- Copy no está en docs/componentes.md más allá del título de
+             cada tarjeta: descripciones completadas a modo de
+             placeholder, a confirmar con el cliente. -->
+        <div class="benefits__list">
+          <article class="benefit-card">
+            <div class="benefit-card__icon" aria-hidden="true"><!-- TODO: ícono line-art pendiente --></div>
+            <h3 class="benefit-card__title">Atención Personalizada</h3>
+            <p class="benefit-card__description">Cada visita se adapta a lo que necesitás, sin apuro y con atención al detalle.</p>
+          </article>
+
+          <article class="benefit-card">
+            <div class="benefit-card__icon" aria-hidden="true"><!-- TODO: ícono line-art pendiente --></div>
+            <h3 class="benefit-card__title">Calidad Profesional</h3>
+            <p class="benefit-card__description">Barberos con experiencia y productos de primera calidad en cada servicio.</p>
+          </article>
+
+          <article class="benefit-card">
+            <div class="benefit-card__icon" aria-hidden="true"><!-- TODO: ícono line-art pendiente --></div>
+            <h3 class="benefit-card__title">Ambiente Cercano</h3>
+            <p class="benefit-card__description">Un espacio cómodo y sin pretensiones, pensado para que te sientas como en casa.</p>
+          </article>
+
+          <article class="benefit-card">
+            <div class="benefit-card__icon" aria-hidden="true"><!-- TODO: ícono line-art pendiente --></div>
+            <h3 class="benefit-card__title">Tendencias y Estilo</h3>
+            <p class="benefit-card__description">Siempre al día con los cortes y técnicas más actuales.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- SECCIÓN: FAQ -->
+    <section class="faq" aria-label="Preguntas frecuentes">
+      <div class="container">
+        <h2 class="faq__title">Preguntas frecuentes</h2>
+
+        <!-- Copy no está documentada en ningún archivo de docs/: las 6
+             preguntas y respuestas son placeholder, a confirmar con el
+             cliente antes de publicar (mismo criterio que
+             services__intro). -->
+        <div class="faq__list">
+          <details class="faq-item">
+            <summary class="faq-item__question">¿Necesito reservar hora?<span class="faq-item__icon" aria-hidden="true"></span></summary>
+            <p class="faq-item__answer">Sí, recomendamos reservar por Agenda Pro para asegurar el horario que prefieras, aunque también recibimos clientes sin hora según disponibilidad.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-item__question">¿Qué medios de pago aceptan?<span class="faq-item__icon" aria-hidden="true"></span></summary>
+            <p class="faq-item__answer">Aceptamos efectivo, tarjetas de débito y crédito, y transferencia.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-item__question">¿Cuánto dura un corte?<span class="faq-item__icon" aria-hidden="true"></span></summary>
+            <p class="faq-item__answer">En promedio entre 30 y 45 minutos, dependiendo del servicio elegido.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-item__question">¿Atienden sin hora agendada?<span class="faq-item__icon" aria-hidden="true"></span></summary>
+            <p class="faq-item__answer">Sí, según disponibilidad, pero recomendamos agendar para evitar esperas.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-item__question">¿Dónde están ubicados?<span class="faq-item__icon" aria-hidden="true"></span></summary>
+            <p class="faq-item__answer">En Av. Apoquindo 6314, oficina 302, Las Condes, Santiago.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-item__question">¿Hacen servicios a domicilio?<span class="faq-item__icon" aria-hidden="true"></span></summary>
+            <p class="faq-item__answer">Por ahora no, todos los servicios son en nuestro local.</p>
+          </details>
+        </div>
+
+        <div class="faq__cta">
+          <a class="btn" href="https://agendapro.com/iframe/overview/a2bf274c-4983-4407-bc82-c9ba6b6989bf" data-agenda data-track="agenda">Reserva Online</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- SECCIÓN: Footer -->
-  <footer></footer>
+  <footer class="site-footer">
+    <div class="site-footer__media" aria-hidden="true"><!-- TODO: imagen de fondo a sangre pendiente --></div>
+    <div class="container site-footer__inner">
+      <a class="site-footer__logo" href="/" aria-label="Cuts And Friends — Inicio">
+        <!-- TODO: asset de logo definitivo pendiente (ver docs/componentes.md §7) -->
+        <span class="logo-placeholder site-footer__logo-placeholder" aria-hidden="true"></span>
+      </a>
+
+      <nav class="site-footer__nav" aria-label="Principal">
+        <ul class="site-footer__nav-list">
+          <li><a href="#" aria-disabled="true">Barbería/Servicios</a></li>
+          <li><a href="#" aria-disabled="true">Galería</a></li>
+          <li><a href="#" aria-disabled="true">Barberos</a></li>
+          <li><a href="#" aria-disabled="true">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-footer__info">
+        <p class="site-footer__address">Av. Apoquindo 6314, of. 302, Las Condes, Santiago</p>
+        <div class="site-footer__schedule">
+          <p class="site-footer__schedule-title">Horario Disponible:</p>
+          <p class="site-footer__schedule-value">Lu - Vi: 10am - 7:30pm</p>
+          <p class="site-footer__schedule-value">Sá: 11am - 5:30pm</p>
+        </div>
+      </div>
+
+      <div class="site-footer__icons">
+        <div class="site-footer__icons-row">
+          <a class="site-footer__icon" href="#" aria-disabled="true" aria-label="Ubicación en Google Maps"><!-- TODO: ícono de ubicación pendiente, falta confirmar URL de Google Maps --></a>
+          <a class="site-footer__icon" href="https://wa.me/56974291678" target="_blank" rel="noopener" data-track="whatsapp" aria-label="WhatsApp"><!-- TODO: ícono de WhatsApp pendiente --></a>
+        </div>
+        <div class="site-footer__icons-row">
+          <a class="site-footer__icon" href="#" aria-disabled="true" aria-label="Instagram"><!-- TODO: ícono de Instagram pendiente, falta confirmar URL --></a>
+          <a class="site-footer__icon" href="#" aria-disabled="true" aria-label="Red social"><!-- TODO: red social pendiente de confirmar cuál --></a>
+          <a class="site-footer__icon" href="#" aria-disabled="true" aria-label="Red social"><!-- TODO: red social pendiente de confirmar cuál --></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp: requisito de CONTEXTO.md (sin página
+       de contacto, la conversión depende de Agenda Pro y WhatsApp).
+       Visible en todo el scroll, en ambos breakpoints. -->
+  <a
+    class="whatsapp-cta whatsapp-cta--float"
+    href="https://wa.me/56974291678"
+    target="_blank"
+    rel="noopener"
+    data-track="whatsapp"
+    aria-label="Escribinos por WhatsApp"
+  ><!-- TODO: ícono de WhatsApp pendiente --></a>
 
   <!-- POPUP: Agenda Pro (docs/home-estructura.md, "Decisiones confirmadas") -->
   <dialog id="agenda-dialog" class="agenda-dialog" aria-label="Agenda tu hora">
@@ -240,5 +492,6 @@
   <script src="assets/js/header.js" defer></script>
   <script src="assets/js/agenda-dialog.js" defer></script>
   <script src="assets/js/services-carousel.js" defer></script>
+  <script src="assets/js/faq-accordion.js" defer></script>
 </body>
 </html>

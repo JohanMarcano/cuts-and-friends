@@ -1,0 +1,65 @@
+/*
+  Experience ("Nosotros") — Cuts And Friends
+  Fuente: docs/home-estructura.md §5.
+
+  1 columna centrada sobre imagen de fondo a sangre, mismo patrón que
+  Hero (hero.css): en mobile la imagen va recortada con la misma
+  máscara orgánica — pendiente el asset real en ambos casos, ver TODO.
+
+  Título "NOSOTROS" en heading/h2 (docs/ESTADO.md, normalización
+  2026-09-11: "encabezado Nosotros a 45px", ya el valor por defecto de
+  --font-size-heading-h2 en este catálogo) — mismo estilo que usan los
+  demás títulos de sección (Servicios, Nuestros artistas, etc.), por
+  consistencia con lo ya shippeado.
+*/
+
+.experience {
+  position: relative;
+  min-height: var(--experience-min-height);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.experience__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-bg-muted); /* TODO: imagen de fondo a sangre + máscara orgánica mobile pendientes */
+}
+
+.experience__content {
+  width: 100%;
+  padding-block: var(--spacing-48);
+  text-align: center;
+}
+
+.experience__title {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-heading-h2);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-default);
+}
+
+.experience__subtitle {
+  margin-block-start: var(--spacing-16);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-heading-h3-alt-2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-heading-h3-alt-2);
+  color: var(--color-text-default);
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.experience__description {
+  margin-block-start: var(--spacing-16);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-default);
+  max-width: 600px;
+  margin-inline: auto;
+}

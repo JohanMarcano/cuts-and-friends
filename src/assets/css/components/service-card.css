@@ -8,13 +8,24 @@
 
   La imagen es un placeholder de color sólido (sin asset todavía, ver
   TODO en el HTML) — nunca <img> a un archivo inexistente.
+
+  Radio de borde y degradado (CLAUDE.md, 2026-09-14): componentes.md §2
+  documentaba radius/none y ninguna capa de overlay separada, pero ese
+  archivo se rehizo después de esa extracción — el diseño actual (ver
+  captura vía MCP de Figma) muestra las tarjetas redondeadas y con un
+  degradado oscuro sobre la mitad inferior de la foto, que es lo que
+  permite leer el título y la descripción sobre cualquier imagen. Radio
+  medido por pixel-peeping del screenshot (--radius-md, ver tokens.css).
+  El degradado usa --color-overlay-image, ya declarado en
+  design-tokens.md pero huérfano hasta ahora (componentes.md §11 lo
+  marcaba como pendiente de confirmar).
 */
 
 .service-card {
   position: relative;
   width: 100%;
   height: var(--service-card-height-mobile);
-  border-radius: var(--radius-none);
+  border-radius: var(--radius-md);
   overflow: hidden;
 }
 
@@ -22,6 +33,20 @@
   position: absolute;
   inset: 0;
   background-color: var(--color-bg-muted); /* TODO: foto del servicio pendiente */
+}
+
+.service-card__overlay {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  /* "mitad inferior de la foto" (instrucción del 2026-09-14): el
+     degradado arranca en el 50% de alto de la tarjeta. El porcentaje
+     de opacidad de cada stop no está documentado como variable en
+     Figma — transparente a --color-overlay-image sólido es el valor
+     más simple y defendible, a confirmar visualmente en navegador. */
+  inset-block-start: 50%;
+  background-image: linear-gradient(to bottom, transparent, var(--color-overlay-image));
+  pointer-events: none;
 }
 
 .service-card__body {

@@ -148,7 +148,9 @@
   --spacing-4: 4px;
   --spacing-8: 8px;
   --spacing-12: 12px;
+  --spacing-13: 13px; /* medido: gap real entre FAQ Item en mobile (~13px), home-estructura.md §8 — mismo tratamiento que /29, /35, /52, /68 */
   --spacing-16: 16px;
+  --spacing-18: 18px; /* medido: gap real entre Team Card en desktop (~18-19px), home-estructura.md §6 */
   --spacing-20: 20px;
   --spacing-24: 24px;
   --spacing-29: 29px;
@@ -167,6 +169,7 @@
      RADIO DE BORDE
      ============================================ */
   --radius-none: 0;
+  --radius-md: 16px; /* Service Card (componentes.md §2). El nodo de Figma no lo expone como variable (get_variable_defs solo devolvió radius/none) — medido por pixel-peeping del screenshot MCP del 2026-09-14 (~16-18px, igual en mobile y desktop). El archivo se rehizo después de la extracción original de componentes.md, que documentaba radius/none: confirmar el valor exacto con la diseñadora. */
   --radius-full: 999px;
 
   /* ============================================
@@ -227,6 +230,69 @@
   --service-card-width-desktop: 350px;
   --service-card-height-desktop: 551px;
   --line-height-service-card-description-mobile: 17px; /* desviación documentada: no coincide con --line-height-body-sm */
+
+  /* ============================================
+     COMPONENTE — Gallery (docs/home-estructura.md §4)
+     Sin componente propio en 02 · Components, solo layout de sección.
+     El gap no está documentado en el Figma: valor por defecto, a
+     confirmar. El aspect-ratio tampoco está documentado — se dedujo
+     para que 2 filas + gap calcen con el alto de sección documentado
+     (1207px desktop); confirmar visualmente contra el Figma.
+     ============================================ */
+  --gallery-item-width-wide-desktop: 400px;
+  --gallery-item-width-narrow-desktop: 325px;
+  --gallery-item-gap: var(--spacing-16);
+  --gallery-item-aspect-ratio: 4 / 5;
+
+  /* ============================================
+     COMPONENTE — Experience / "Nosotros" (docs/home-estructura.md §5)
+     ============================================ */
+  --experience-min-height: 461px;
+
+  /* ============================================
+     COMPONENTE — Team Card (docs/componentes.md §3)
+     Ancho mobile deliberadamente sin token: la tarjeta va fluida al
+     100% (home-estructura.md §6 pide "ancho completo"), no a los
+     342px fijos de la instancia de Figma — mismo criterio que Service
+     Card.
+     ============================================ */
+  --team-card-width-desktop: 488px;
+  --team-photo-height-desktop: 704px;
+  --team-photo-height-mobile: 492px; /* rango real 492-493px, componentes.md §3 */
+  --team-icon-size-desktop: 60px;
+  --team-icon-width-mobile: 29px;
+  --team-icon-height-mobile: 30px;
+
+  /* ============================================
+     COMPONENTE — Benefit Card (docs/componentes.md §4)
+     ============================================ */
+  --benefit-icon-size-desktop: 134px;
+  --benefit-icon-size-mobile: 70px;
+  --benefit-grid-gap-mobile: var(--spacing-16); /* no documentado en home-estructura.md §7, valor por defecto — confirmar */
+
+  /* ============================================
+     COMPONENTE — FAQ Item (docs/componentes.md §5)
+     ============================================ */
+  --faq-icon-size-desktop: 42px; /* redondeado desde 42.485px */
+  --faq-icon-size-mobile: 19px; /* redondeado desde 19.423px */
+  --faq-icon-glyph-desktop: 32px;
+  --faq-icon-glyph-mobile: 10px;
+
+  /* ============================================
+     COMPONENTE — Footer (docs/componentes.md §10) y Logo (§7)
+     ============================================ */
+  --footer-logo-width-mobile: 55px;
+  --footer-logo-height-mobile: 67px;
+  --footer-logo-width-desktop: 290px;
+  --footer-logo-height-desktop: 294px;
+  --footer-icon-size-mobile: 10px; /* crudo Figma: es un ícono, no texto, así que no aplica la regla de legibilidad de CLAUDE.md — el target táctil real se amplía con padding en footer.css, no acá */
+  --footer-icon-size-desktop: 32px;
+
+  /* ============================================
+     COMPONENTE — CTA WhatsApp (docs/componentes.md §6)
+     ============================================ */
+  --whatsapp-icon-size: 32px;
+  --whatsapp-float-size: 56px; /* no documentado en Figma: estándar de tamaño táctil mínimo para un FAB — confirmar con la diseñadora */
 }
 
 /* ============================================
@@ -271,5 +337,6 @@
 
     --button-height: 61px;
     --hero-min-height: 810px;
+    --experience-min-height: 720px;
   }
 }

@@ -1,0 +1,43 @@
+/*
+  CTA WhatsApp — Cuts And Friends
+  Fuente: docs/componentes.md §6. Ícono de 32×32px, enlaza a
+  https://wa.me/56974291678. Un solo tamaño documentado (se usa dentro
+  del Footer); la variante flotante (--whatsapp-cta--float) es un
+  requisito de CONTEXTO.md ("el botón de WhatsApp debe quedar flotante
+  y visible durante todo el scroll") sin spec propia en Figma, así que
+  su tamaño (--whatsapp-float-size) es un valor deducido, no un token
+  de diseño — ver tokens.css.
+
+  El ícono es un placeholder (sin asset todavía, ver TODO en el HTML):
+  nunca se dibuja el logo de WhatsApp a mano, para no inventar arte de
+  marca.
+*/
+
+.whatsapp-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--whatsapp-icon-size);
+  height: var(--whatsapp-icon-size);
+  border: 1px dashed var(--color-border-default);
+}
+
+.whatsapp-cta:focus-visible {
+  outline: 2px solid var(--color-bg-accent);
+  outline-offset: 2px;
+}
+
+.whatsapp-cta--float {
+  position: fixed;
+  inset-inline-end: var(--spacing-16);
+  inset-block-end: var(--spacing-16);
+  /* Por sobre el header (z-index: 40, header.css) para quedar visible
+     incluso con el header fijo mobile superpuesto al Hero. */
+  z-index: 50;
+  width: var(--whatsapp-float-size);
+  height: var(--whatsapp-float-size);
+  border: none;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-accent);
+  color: var(--color-text-default);
+}

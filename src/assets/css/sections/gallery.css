@@ -1,0 +1,109 @@
+/*
+  Gallery — Cuts And Friends
+  Fuente: docs/home-estructura.md §4.
+
+  Grid estático (no carrusel) en ambos breakpoints. La barra de
+  progreso que aparecía en el Figma desktop era un error de capas ya
+  corregido por la diseñadora (ver "Decisiones confirmadas" del
+  documento fuente) — no se implementa nada de scroll acá.
+
+  Ancho de columnas alternado 400/325px: documentado tal cual para
+  desktop. Para mobile (2 columnas) no hay medida literal en Figma —
+  se usa la misma proporción 400:325 como flex-grow, fluida al ancho
+  del contenedor, en vez de inventar un px fijo.
+
+  Estructura duplicada (grid--mobile / grid--desktop): el "patrón
+  escalonado" alterna qué columna es ancha en cada fila, y desktop
+  (2 filas de 4) y mobile (4 filas de 2) agrupan las mismas 8 fotos de
+  forma distinta — no es una reagrupación que CSS Grid/Flexbox pueda
+  resolver con una sola lista de columnas por breakpoint, así que se
+  arma una vez por breakpoint y se oculta la que no aplica.
+*/
+
+.gallery {
+  padding-block: var(--spacing-64);
+}
+
+.gallery__intro {
+  max-width: 600px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.gallery__title {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-heading-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-100);
+  color: var(--color-text-default);
+}
+
+.gallery__subtitle {
+  margin-block-start: var(--spacing-8);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-heading-h3);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-default);
+}
+
+.gallery__description {
+  margin-block-start: var(--spacing-16);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-default);
+}
+
+.gallery__grid--mobile,
+.gallery__grid--desktop {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gallery-item-gap);
+  margin-block-start: var(--spacing-32);
+}
+
+.gallery__grid--desktop {
+  display: none;
+}
+
+.gallery__row {
+  display: flex;
+  gap: var(--gallery-item-gap);
+}
+
+.gallery__item {
+  flex: 1 1 0;
+  min-width: 0;
+  aspect-ratio: var(--gallery-item-aspect-ratio);
+  background-color: var(--color-bg-muted); /* TODO: foto de galería pendiente */
+}
+
+.gallery__item--wide {
+  flex-grow: 400;
+}
+
+.gallery__item--narrow {
+  flex-grow: 325;
+}
+
+@media (min-width: 1200px) {
+  .gallery__grid--mobile {
+    display: none;
+  }
+
+  .gallery__grid--desktop {
+    display: flex;
+  }
+
+  .gallery__item {
+    flex-grow: 0;
+  }
+
+  .gallery__item--wide {
+    flex-basis: var(--gallery-item-width-wide-desktop);
+  }
+
+  .gallery__item--narrow {
+    flex-basis: var(--gallery-item-width-narrow-desktop);
+  }
+}

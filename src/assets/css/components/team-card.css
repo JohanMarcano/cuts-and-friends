@@ -1,0 +1,86 @@
+/*
+  Team Card — Cuts And Friends
+  Fuente: docs/componentes.md §3.
+
+  Mobile: ancho fluido al 100% (home-estructura.md §6 pide "ancho
+  completo"), no los 342px fijos de la instancia de Figma — mismo
+  criterio ya aplicado a Service Card. Solo el alto de la foto está
+  token-izado (--team-photo-height-mobile); el resto de la tarjeta
+  crece con el contenido.
+
+  La foto y el ícono de redes son placeholders (sin asset todavía, ver
+  TODO en el HTML) — nunca <img> a un archivo inexistente.
+*/
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.team-card__photo {
+  width: 100%;
+  height: var(--team-photo-height-mobile);
+  background-color: var(--color-bg-muted); /* TODO: foto del barbero pendiente */
+}
+
+.team-card__name {
+  margin-block-start: var(--spacing-16);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-label-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-100);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-default);
+}
+
+.team-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-16);
+  margin-block-start: var(--spacing-16);
+}
+
+.team-card__social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--team-icon-width-mobile);
+  height: var(--team-icon-height-mobile);
+  border-radius: var(--radius-full);
+  border: 1px dashed var(--color-border-default); /* TODO: ícono de Instagram pendiente */
+}
+
+.team-card__social:focus-visible,
+.team-card .btn:focus-visible {
+  outline: 2px solid var(--color-bg-accent);
+  outline-offset: 2px;
+}
+
+@media (min-width: 1200px) {
+  .team-card {
+    width: var(--team-card-width-desktop);
+  }
+
+  .team-card__photo {
+    height: var(--team-photo-height-desktop);
+  }
+
+  .team-card__name {
+    margin-block-start: var(--spacing-24);
+  }
+
+  .team-card__actions {
+    margin-block-start: var(--spacing-24);
+    gap: var(--spacing-24);
+  }
+
+  .team-card__social {
+    width: var(--team-icon-size-desktop);
+    height: var(--team-icon-size-desktop);
+    border-radius: var(--radius-full);
+  }
+}

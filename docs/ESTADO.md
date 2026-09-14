@@ -41,11 +41,15 @@
 
 ## En curso
 
-- Prueba de un día: construir header, hero y carrusel de Services
-  como tema WordPress a medida, en vez de maquetar con Elementor.
-  Si al final del día las tres secciones corren bien, el proyecto
-  sigue por esa vía. Si no, se vuelve a Elementor sin pérdida: la
-  documentación de diseño sirve para ambas rutas.
+- Prueba del sitio estático (HTML/CSS/JS planos en `src/`, sin
+  WordPress ni Elementor — ver bloque "Prueba en curso" de
+  `CLAUDE.md`). Con el cierre de sesión del 2026-09-14, las 9
+  secciones de HOME están maquetadas (Header, Hero, Services, Gallery,
+  Experience, Team, Benefits, FAQ, Footer) más el popup de Agenda Pro
+  y el botón flotante de WhatsApp. Falta: assets reales (fotos, logo,
+  íconos, fuente GOOD_BRUSH aplicada), copy definitivo (Benefits, FAQ,
+  párrafos de Gallery/Experience son placeholder), y decidir si el
+  proyecto sigue por esta vía o vuelve a Elementor.
 
 ## Bloqueado / esperando
 
@@ -172,3 +176,28 @@ quedaron en la página "03 landings". Se acotó el alcance: fase 1 solo
 HOME, CONTACTO fuera del proyecto, blog en fase 2. Se recibió la fuente
 GOOD_BRUSH con licencia libre. Siguiente paso: reprocesar el Figma
 nuevo y cargar los estilos globales en Elementor.
+
+**2026-09-14** — Corregido el bug del carrusel de Services: con
+`slidesPerView: 4` fijo, Swiper repartía el ancho del contenedor entre
+4 slides (287.75px) en vez de respetar los 350px de la Service Card, y
+la tarjeta se desbordaba del slide tapando el gap. Cambiado a
+`slidesPerView: "auto"` en desktop, con el ancho del `.swiper-slide`
+sincronizado a `--service-card-width-desktop` — verificado en
+navegador, ancho de slide y tarjeta coinciden, gap visible, y en
+viewports angostos entran menos tarjetas (con una parcial) en vez de
+comprimirse. Agregado radio de borde (`--radius-md`, ~16-18px, medido
+por pixel-peeping de un screenshot vía MCP de Figma porque el nodo no
+lo expone como variable) y degradado oscuro sobre la mitad inferior de
+la Service Card (`--color-overlay-image`, ya declarado pero huérfano
+hasta ahora) — ambos confirman que el Figma se rehizo después de la
+extracción de `componentes.md` §2, que documentaba `radius/none` y sin
+overlay. Construidas las 6 secciones restantes de HOME (Gallery,
+Experience, Team, Benefits, FAQ, Footer) más el botón flotante de
+WhatsApp, siguiendo `docs/home-estructura.md` §4-9 y `docs/componentes.md`
+§3-7 y §10. Probado en navegador (desktop 1440px y mobile 390px):
+carrusel, acordeón FAQ (abre/cierra, ícono rota), popup de Agenda Pro
+(carga el iframe real), grillas de Gallery/Benefits/FAQ y botón
+flotante, todo sin errores de consola. Pendiente: assets reales (fotos,
+logo, íconos), copy definitivo de Benefits/FAQ/Gallery/Experience
+(hoy son placeholder), y varias decisiones de diseño no confirmadas
+(ver detalle entregado a Johan en el chat de la sesión).

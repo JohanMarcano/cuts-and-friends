@@ -1,0 +1,64 @@
+/*
+  Benefit Card — Cuts And Friends
+  Fuente: docs/componentes.md §4.
+
+  Sin fondo ni borde propio: ícono + texto flotando sobre el fondo de
+  la sección Benefits. El ícono es un placeholder (sin asset todavía,
+  ver TODO en el HTML).
+
+  La descripción mobile usa --font-size-benefit-description-mobile
+  (11px) en vez del genérico --font-size-body-sm (16px "mobile
+  propuesto"): valor confirmado por el cliente del diseño el
+  2026-09-11 para esta instancia puntual (ver tokens.css).
+*/
+
+.benefit-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.benefit-card__icon {
+  width: var(--benefit-icon-size-mobile);
+  height: var(--benefit-icon-size-mobile);
+  border: 1px dashed var(--color-border-default); /* TODO: ícono line-art pendiente */
+}
+
+.benefit-card__title {
+  margin-block-start: var(--spacing-16);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-label-md);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-100);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.benefit-card__description {
+  margin-block-start: var(--spacing-8);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-benefit-description-mobile);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-default);
+}
+
+@media (min-width: 1200px) {
+  .benefit-card__icon {
+    width: var(--benefit-icon-size-desktop);
+    height: var(--benefit-icon-size-desktop);
+  }
+
+  .benefit-card__title {
+    margin-block-start: var(--spacing-24);
+    font-size: var(--font-size-label-lg);
+  }
+
+  .benefit-card__description {
+    margin-block-start: var(--spacing-16);
+    font-size: var(--font-size-body-md);
+    line-height: var(--line-height-body-md);
+    max-width: 320px;
+  }
+}

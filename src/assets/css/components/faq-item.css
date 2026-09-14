@@ -1,0 +1,123 @@
+/*
+  FAQ Item — Cuts And Friends
+  Fuente: docs/componentes.md §5.
+
+  <details>/<summary> nativo: el estado abierto/cerrado lo da el
+  atributo [open] del propio elemento, sin JS para el acordeón en sí
+  (assets/js/faq-accordion.js solo espeja ese estado a aria-expanded
+  en el <summary>, porque el mapeo ARIA nativo de <summary> no es
+  consistente entre navegadores/lectores de pantalla — CLAUDE.md pide
+  aria-expanded explícito).
+
+  El ícono +/− no tiene un segundo asset visual (pendiente #4 de
+  componentes.md §12): se resuelve rotando 45° el mismo signo "+"
+  dibujado con dos pseudo-elementos CSS, no con un SVG.
+*/
+
+.faq-item {
+  background-color: var(--color-bg-default);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-none);
+}
+
+.faq-item + .faq-item {
+  margin-block-start: var(--spacing-13);
+}
+
+.faq-item__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  padding: var(--spacing-12) var(--spacing-16);
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-label-md-alt-faq);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-default);
+}
+
+.faq-item__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item__question:focus-visible {
+  outline: 2px solid var(--color-bg-accent);
+  outline-offset: -2px;
+}
+
+.faq-item__icon {
+  position: relative;
+  flex: none;
+  width: var(--faq-icon-size-mobile);
+  height: var(--faq-icon-size-mobile);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-default);
+  transition: transform 0.2s ease;
+}
+
+.faq-item__icon::before,
+.faq-item__icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: var(--color-text-default);
+  transform: translate(-50%, -50%);
+}
+
+.faq-item__icon::before {
+  width: var(--faq-icon-glyph-mobile);
+  height: 2px;
+}
+
+.faq-item__icon::after {
+  width: 2px;
+  height: var(--faq-icon-glyph-mobile);
+}
+
+.faq-item[open] .faq-item__icon {
+  transform: rotate(45deg);
+}
+
+.faq-item__answer {
+  padding: 0 var(--spacing-16) var(--spacing-16);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body-md-alt-2);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body-md-alt-2);
+  color: var(--color-text-default);
+}
+
+@media (min-width: 1200px) {
+  /* En desktop el espaciado lo da el gap de la grilla (faq.css), no el
+     margin mobile entre ítems apilados. */
+  .faq-item + .faq-item {
+    margin-block-start: 0;
+  }
+
+  .faq-item__question {
+    padding: var(--spacing-24) var(--spacing-32);
+  }
+
+  .faq-item__icon {
+    width: var(--faq-icon-size-desktop);
+    height: var(--faq-icon-size-desktop);
+  }
+
+  .faq-item__icon::before {
+    width: var(--faq-icon-glyph-desktop);
+  }
+
+  .faq-item__icon::after {
+    height: var(--faq-icon-glyph-desktop);
+  }
+
+  .faq-item__answer {
+    padding: 0 var(--spacing-32) var(--spacing-32);
+    max-width: 654px;
+  }
+}
