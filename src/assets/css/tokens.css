@@ -183,7 +183,7 @@
      RADIO DE BORDE
      ============================================ */
   --radius-none: 0;
-  --radius-md: 16px; /* Service Card (componentes.md §2). El nodo de Figma no lo expone como variable (get_variable_defs solo devolvió radius/none) — medido por pixel-peeping del screenshot MCP del 2026-09-14 (~16-18px, igual en mobile y desktop). El archivo se rehizo después de la extracción original de componentes.md, que documentaba radius/none: confirmar el valor exacto con la diseñadora. */
+  --radius-md: 25px; /* Service Card (componentes.md §2). Confirmado por la diseñadora (2026-09-14): 25px, igual en mobile y desktop — corrige el valor de 16px medido por pixel-peeping del screenshot MCP, que quedaba corto. */
   --radius-full: 999px;
 
   /* ============================================

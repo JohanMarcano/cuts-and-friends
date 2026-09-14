@@ -78,7 +78,8 @@
   flex: 1 1 0;
   min-width: 0;
   aspect-ratio: var(--gallery-item-aspect-ratio);
-  background-color: var(--color-bg-muted); /* TODO: foto de galería pendiente */
+  background-color: var(--color-bg-muted);
+  object-fit: cover;
 }
 
 .gallery__item--wide {

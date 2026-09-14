@@ -20,9 +20,10 @@
 }
 
 .benefit-card__icon {
+  display: block;
   width: var(--benefit-icon-size-mobile);
   height: var(--benefit-icon-size-mobile);
-  border: 1px dashed var(--color-border-default); /* TODO: ícono line-art pendiente */
+  object-fit: cover;
 }
 
 .benefit-card__title {

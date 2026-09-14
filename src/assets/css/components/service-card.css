@@ -6,19 +6,16 @@
   4 tarjetas del sitio (Corte, Cabello + Barba, Barba, Facial) usan los
   mismos tokens de esas 2 variantes documentadas.
 
-  La imagen es un placeholder de color sólido (sin asset todavía, ver
-  TODO en el HTML) — nunca <img> a un archivo inexistente.
+  4 de las 7 tarjetas (Corte, Cabello + Barba, Barba, Facial) usan foto
+  real; las 3 restantes (Servicio 5-7) quedan con el placeholder de
+  color sólido hasta tener foto (ver TODO en el HTML).
 
-  Radio de borde y degradado (CLAUDE.md, 2026-09-14): componentes.md §2
-  documentaba radius/none y ninguna capa de overlay separada, pero ese
-  archivo se rehizo después de esa extracción — el diseño actual (ver
-  captura vía MCP de Figma) muestra las tarjetas redondeadas y con un
-  degradado oscuro sobre la mitad inferior de la foto, que es lo que
-  permite leer el título y la descripción sobre cualquier imagen. Radio
-  medido por pixel-peeping del screenshot (--radius-md, ver tokens.css).
-  El degradado usa --color-overlay-image, ya declarado en
-  design-tokens.md pero huérfano hasta ahora (componentes.md §11 lo
-  marcaba como pendiente de confirmar).
+  Radio de borde y degradado (confirmado por la diseñadora, 2026-09-14):
+  --radius-md es 25px (tokens.css). Sin overlay propio: el degradado
+  oscuro que hace legible el título/descripción sobre la foto ya viene
+  quemado en las imágenes exportadas — aplicar además un overlay en CSS
+  duplicaba el oscurecido. --color-overlay-image (design-tokens.md)
+  queda declarado pero sin uso en este componente.
 
   Card fluida (2026-09-14): el alto ya no es un valor fijo por
   breakpoint, sale de --service-card-aspect-ratio (350/551, proporción
@@ -37,21 +34,10 @@
 .service-card__media {
   position: absolute;
   inset: 0;
-  background-color: var(--color-bg-muted); /* TODO: foto del servicio pendiente */
-}
-
-.service-card__overlay {
-  position: absolute;
-  inset-inline: 0;
-  inset-block-end: 0;
-  /* "mitad inferior de la foto" (instrucción del 2026-09-14): el
-     degradado arranca en el 50% de alto de la tarjeta. El porcentaje
-     de opacidad de cada stop no está documentado como variable en
-     Figma — transparente a --color-overlay-image sólido es el valor
-     más simple y defendible, a confirmar visualmente en navegador. */
-  inset-block-start: 50%;
-  background-image: linear-gradient(to bottom, transparent, var(--color-overlay-image));
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: var(--color-bg-muted); /* TODO: foto del servicio pendiente (Servicio 5-7) */
 }
 
 .service-card__body {

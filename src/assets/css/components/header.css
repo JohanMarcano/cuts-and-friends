@@ -77,7 +77,7 @@
   display: block;
   width: var(--header-logo-width);
   height: var(--header-logo-height);
-  border: 1px dashed var(--color-border-default);
+  object-fit: cover;
 }
 
 .site-header__nav {

@@ -19,7 +19,12 @@
   justify-content: center;
   width: var(--whatsapp-icon-size);
   height: var(--whatsapp-icon-size);
-  border: 1px dashed var(--color-border-default);
+}
+
+.whatsapp-cta img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .whatsapp-cta:focus-visible {

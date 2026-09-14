@@ -2,16 +2,15 @@
   Logo — Cuts And Friends
   Fuente: docs/componentes.md §7.
 
-  Estilo visual genérico del placeholder (sin asset todavía, ver TODO
-  en el HTML). El tamaño no vive acá: componentes.md §12 (pendiente 5)
-  documenta 3 variantes de tamaño sin relación de escala entre sí
-  (Header, Header mobile real, Footer, Footer mobile), así que cada
-  contexto define su propio ancho/alto con sus tokens (ver
-  header.css para el Header, ya shippeado, y footer.css para el
-  Footer). Este archivo solo centraliza la apariencia compartida.
+  El tamaño no vive acá: componentes.md §12 (pendiente 5) documenta 3
+  variantes de tamaño sin relación de escala entre sí (Header, Header
+  mobile real, Footer, Footer mobile), así que cada contexto define su
+  propio ancho/alto con sus tokens (ver header.css para el Header,
+  ya shippeado, y footer.css para el Footer). Este archivo solo
+  centraliza la apariencia compartida del <img> (Logo.svg).
 */
 
 .logo-placeholder {
   display: block;
-  border: 1px dashed var(--color-border-default);
+  object-fit: cover;
 }

@@ -43,8 +43,7 @@
     <div class="site-header__nav-row">
       <div class="container site-header__nav-row-inner">
         <a class="site-header__logo" href="/" aria-label="Cuts And Friends — Inicio">
-          <!-- TODO: asset de logo definitivo pendiente (ver docs/componentes.md §7) -->
-          <span class="site-header__logo-placeholder" aria-hidden="true"></span>
+          <img class="site-header__logo-placeholder" src="assets/img/iconos/Logo.svg" alt="" width="154" height="160" loading="lazy">
         </a>
 
         <nav class="site-header__nav" aria-label="Principal">
@@ -75,8 +74,7 @@
     <dialog id="mobile-menu" class="mobile-menu" aria-label="Menú principal">
       <div class="mobile-menu__header container">
         <a class="mobile-menu__logo" href="/" aria-label="Cuts And Friends — Inicio">
-          <!-- TODO: asset de logo definitivo pendiente (ver docs/componentes.md §7) -->
-          <span class="site-header__logo-placeholder" aria-hidden="true"></span>
+          <img class="site-header__logo-placeholder" src="assets/img/iconos/Logo.svg" alt="" width="154" height="160" loading="lazy">
         </a>
 
         <button type="button" class="mobile-menu__close" aria-label="Cerrar menú">
@@ -101,7 +99,9 @@
   <main>
     <!-- SECCIÓN: Hero -->
     <section class="hero" aria-label="Bienvenida">
-      <div class="hero__media" aria-hidden="true"></div>
+      <div class="hero__media">
+        <img src="assets/img/cutandfrieds-banner.webp" alt="Barbero de Cuts And Friends realizando un corte de cabello en el local" width="753" height="708">
+      </div>
 
       <div class="hero__content">
         <div class="hero__text">
@@ -147,8 +147,7 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <article class="service-card">
-                <div class="service-card__media" aria-hidden="true"><!-- TODO: foto del servicio "Corte" pendiente --></div>
-                <div class="service-card__overlay" aria-hidden="true"></div>
+                <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-1.webp" alt="Corte de cabello realizado en Cuts And Friends" width="350" height="551" loading="lazy">
                 <div class="service-card__body">
                   <h3 class="service-card__title">Corte</h3>
                   <p class="service-card__description">Cortes clásicos y modernos, adaptados a tu estilo.</p>
@@ -158,8 +157,7 @@
 
             <div class="swiper-slide">
               <article class="service-card">
-                <div class="service-card__media" aria-hidden="true"><!-- TODO: foto del servicio "Cabello + Barba" pendiente --></div>
-                <div class="service-card__overlay" aria-hidden="true"></div>
+                <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-2.webp" alt="Servicio de corte de cabello y barba en Cuts And Friends" width="350" height="551" loading="lazy">
                 <div class="service-card__body">
                   <h3 class="service-card__title">Cabello + Barba</h3>
                   <p class="service-card__description">El combo completo: corte de cabello y barba en una sola sesión.</p>
@@ -169,8 +167,7 @@
 
             <div class="swiper-slide">
               <article class="service-card">
-                <div class="service-card__media" aria-hidden="true"><!-- TODO: foto del servicio "Barba" pendiente --></div>
-                <div class="service-card__overlay" aria-hidden="true"></div>
+                <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-3.webp" alt="Arreglo de barba en Cuts And Friends" width="350" height="551" loading="lazy">
                 <div class="service-card__body">
                   <h3 class="service-card__title">Barba</h3>
                   <p class="service-card__description">Diseño y arreglo de barba con precisión y cuidado.</p>
@@ -180,8 +177,7 @@
 
             <div class="swiper-slide">
               <article class="service-card">
-                <div class="service-card__media" aria-hidden="true"><!-- TODO: foto del servicio "Facial" pendiente --></div>
-                <div class="service-card__overlay" aria-hidden="true"></div>
+                <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-4.webp" alt="Tratamiento facial en Cuts And Friends" width="350" height="551" loading="lazy">
                 <div class="service-card__body">
                   <h3 class="service-card__title">Facial</h3>
                   <p class="service-card__description">Tratamientos faciales para una piel más limpia y saludable.</p>
@@ -194,8 +190,7 @@
                  pendiente, título y descripción son placeholder. -->
             <div class="swiper-slide">
               <article class="service-card">
-                <div class="service-card__media" aria-hidden="true"><!-- TODO: foto del servicio "Servicio 5" pendiente --></div>
-                <div class="service-card__overlay" aria-hidden="true"></div>
+                <div class="service-card__media" aria-hidden="true"><!-- TODO: foto pendiente --></div>
                 <div class="service-card__body">
                   <h3 class="service-card__title">Servicio 5</h3>
                   <p class="service-card__description">Descripción del servicio a confirmar con el cliente.</p>
@@ -205,8 +200,7 @@
 
             <div class="swiper-slide">
               <article class="service-card">
-                <div class="service-card__media" aria-hidden="true"><!-- TODO: foto del servicio "Servicio 6" pendiente --></div>
-                <div class="service-card__overlay" aria-hidden="true"></div>
+                <div class="service-card__media" aria-hidden="true"><!-- TODO: foto pendiente --></div>
                 <div class="service-card__body">
                   <h3 class="service-card__title">Servicio 6</h3>
                   <p class="service-card__description">Descripción del servicio a confirmar con el cliente.</p>
@@ -216,8 +210,7 @@
 
             <div class="swiper-slide">
               <article class="service-card">
-                <div class="service-card__media" aria-hidden="true"><!-- TODO: foto del servicio "Servicio 7" pendiente --></div>
-                <div class="service-card__overlay" aria-hidden="true"></div>
+                <div class="service-card__media" aria-hidden="true"><!-- TODO: foto pendiente --></div>
                 <div class="service-card__body">
                   <h3 class="service-card__title">Servicio 7</h3>
                   <p class="service-card__description">Descripción del servicio a confirmar con el cliente.</p>
@@ -250,36 +243,36 @@
              estructura duplicada en gallery.css. -->
         <div class="gallery__grid gallery__grid--mobile">
           <div class="gallery__row">
-            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 1 pendiente --></div>
-            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 2 pendiente --></div>
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-1.webp" alt="Trabajo de corte y estilo, muestra 1 de la galería de Cuts And Friends" width="400" height="354" loading="lazy">
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-2.webp" alt="Trabajo de corte y estilo, muestra 2 de la galería de Cuts And Friends" width="325" height="354" loading="lazy">
           </div>
           <div class="gallery__row">
-            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 3 pendiente --></div>
-            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 4 pendiente --></div>
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-3.webp" alt="Trabajo de corte y estilo, muestra 3 de la galería de Cuts And Friends" width="400" height="354" loading="lazy">
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-4.webp" alt="Trabajo de corte y estilo, muestra 4 de la galería de Cuts And Friends" width="325" height="354" loading="lazy">
           </div>
           <div class="gallery__row">
-            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 5 pendiente --></div>
-            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 6 pendiente --></div>
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-5.webp" alt="Trabajo de corte y estilo, muestra 5 de la galería de Cuts And Friends" width="400" height="354" loading="lazy">
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-6.webp" alt="Trabajo de corte y estilo, muestra 6 de la galería de Cuts And Friends" width="400" height="354" loading="lazy">
           </div>
           <div class="gallery__row">
-            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 7 pendiente --></div>
-            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 8 pendiente --></div>
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-7.webp" alt="Trabajo de corte y estilo, muestra 7 de la galería de Cuts And Friends" width="325" height="354" loading="lazy">
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-8.webp" alt="Trabajo de corte y estilo, muestra 8 de la galería de Cuts And Friends" width="400" height="354" loading="lazy">
           </div>
         </div>
 
         <!-- Desktop (≥1025px): 2 filas × 4 columnas -->
         <div class="gallery__grid gallery__grid--desktop">
           <div class="gallery__row">
-            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 1 pendiente --></div>
-            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 2 pendiente --></div>
-            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 3 pendiente --></div>
-            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 4 pendiente --></div>
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-1.webp" alt="Trabajo de corte y estilo, muestra 1 de la galería de Cuts And Friends" width="400" height="354" loading="lazy">
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-2.webp" alt="Trabajo de corte y estilo, muestra 2 de la galería de Cuts And Friends" width="325" height="354" loading="lazy">
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-3.webp" alt="Trabajo de corte y estilo, muestra 3 de la galería de Cuts And Friends" width="400" height="354" loading="lazy">
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-4.webp" alt="Trabajo de corte y estilo, muestra 4 de la galería de Cuts And Friends" width="325" height="354" loading="lazy">
           </div>
           <div class="gallery__row">
-            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 5 pendiente --></div>
-            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 6 pendiente --></div>
-            <div class="gallery__item gallery__item--narrow" aria-hidden="true"><!-- TODO: foto de galería 7 pendiente --></div>
-            <div class="gallery__item gallery__item--wide" aria-hidden="true"><!-- TODO: foto de galería 8 pendiente --></div>
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-5.webp" alt="Trabajo de corte y estilo, muestra 5 de la galería de Cuts And Friends" width="400" height="354" loading="lazy">
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-6.webp" alt="Trabajo de corte y estilo, muestra 6 de la galería de Cuts And Friends" width="400" height="354" loading="lazy">
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-7.webp" alt="Trabajo de corte y estilo, muestra 7 de la galería de Cuts And Friends" width="325" height="354" loading="lazy">
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-8.webp" alt="Trabajo de corte y estilo, muestra 8 de la galería de Cuts And Friends" width="400" height="354" loading="lazy">
           </div>
         </div>
       </div>
@@ -309,29 +302,29 @@
 
         <div class="team__list">
           <article class="team-card">
-            <div class="team-card__photo" aria-hidden="true"><!-- TODO: foto de Miguel Linares pendiente --></div>
+            <img class="team-card__photo" src="assets/img/equipo/cutandfrieds-equipo-1.webp" alt="Foto de Miguel Linares, barbero de Cuts And Friends" width="488" height="704" loading="lazy">
             <h3 class="team-card__name">Miguel Linares</h3>
             <div class="team-card__actions">
               <a class="btn" href="https://agendapro.com/iframe/overview/a2bf274c-4983-4407-bc82-c9ba6b6989bf" data-agenda data-track="agenda">Agendar</a>
-              <a class="team-card__social" href="#" aria-disabled="true" aria-label="Instagram de Miguel Linares"><!-- TODO: ícono de Instagram pendiente --></a>
+              <a class="team-card__social" href="#" aria-disabled="true" aria-label="Instagram de Miguel Linares"><img src="assets/img/iconos/instagram.svg" alt="" width="38" height="38" loading="lazy"></a>
             </div>
           </article>
 
           <article class="team-card">
-            <div class="team-card__photo" aria-hidden="true"><!-- TODO: foto de Natalia Pino pendiente --></div>
+            <img class="team-card__photo" src="assets/img/equipo/cutandfrieds-equipo-2.webp" alt="Foto de Natalia Pino, barbera de Cuts And Friends" width="488" height="704" loading="lazy">
             <h3 class="team-card__name">Natalia Pino</h3>
             <div class="team-card__actions">
               <a class="btn" href="https://agendapro.com/iframe/overview/a2bf274c-4983-4407-bc82-c9ba6b6989bf" data-agenda data-track="agenda">Agendar</a>
-              <a class="team-card__social" href="#" aria-disabled="true" aria-label="Instagram de Natalia Pino"><!-- TODO: ícono de Instagram pendiente --></a>
+              <a class="team-card__social" href="#" aria-disabled="true" aria-label="Instagram de Natalia Pino"><img src="assets/img/iconos/instagram.svg" alt="" width="38" height="38" loading="lazy"></a>
             </div>
           </article>
 
           <article class="team-card">
-            <div class="team-card__photo" aria-hidden="true"><!-- TODO: foto de Diego Cignoni pendiente --></div>
+            <img class="team-card__photo" src="assets/img/equipo/cutandfrieds-equipo-3.webp" alt="Foto de Diego Cignoni, barbero de Cuts And Friends" width="488" height="704" loading="lazy">
             <h3 class="team-card__name">Diego Cignoni</h3>
             <div class="team-card__actions">
               <a class="btn" href="https://agendapro.com/iframe/overview/a2bf274c-4983-4407-bc82-c9ba6b6989bf" data-agenda data-track="agenda">Agendar</a>
-              <a class="team-card__social" href="#" aria-disabled="true" aria-label="Instagram de Diego Cignoni"><!-- TODO: ícono de Instagram pendiente --></a>
+              <a class="team-card__social" href="#" aria-disabled="true" aria-label="Instagram de Diego Cignoni"><img src="assets/img/iconos/instagram.svg" alt="" width="38" height="38" loading="lazy"></a>
             </div>
           </article>
         </div>
@@ -348,25 +341,25 @@
              placeholder, a confirmar con el cliente. -->
         <div class="benefits__list">
           <article class="benefit-card">
-            <div class="benefit-card__icon" aria-hidden="true"><!-- TODO: ícono line-art pendiente --></div>
+            <img class="benefit-card__icon" src="assets/img/iconos/cutandfriedns-icono-por-que-elegirnos-1..svg" alt="Ícono de atención personalizada" width="134" height="134" loading="lazy">
             <h3 class="benefit-card__title">Atención Personalizada</h3>
             <p class="benefit-card__description">Cada visita se adapta a lo que necesitás, sin apuro y con atención al detalle.</p>
           </article>
 
           <article class="benefit-card">
-            <div class="benefit-card__icon" aria-hidden="true"><!-- TODO: ícono line-art pendiente --></div>
+            <img class="benefit-card__icon" src="assets/img/iconos/cutandfriedns-icono-por-que-elegirnos-2.svg" alt="Ícono de calidad profesional" width="134" height="134" loading="lazy">
             <h3 class="benefit-card__title">Calidad Profesional</h3>
             <p class="benefit-card__description">Barberos con experiencia y productos de primera calidad en cada servicio.</p>
           </article>
 
           <article class="benefit-card">
-            <div class="benefit-card__icon" aria-hidden="true"><!-- TODO: ícono line-art pendiente --></div>
+            <img class="benefit-card__icon" src="assets/img/iconos/cutandfriedns-icono-por-que-elegirnos-3.svg" alt="Ícono de ambiente cercano" width="134" height="134" loading="lazy">
             <h3 class="benefit-card__title">Ambiente Cercano</h3>
             <p class="benefit-card__description">Un espacio cómodo y sin pretensiones, pensado para que te sientas como en casa.</p>
           </article>
 
           <article class="benefit-card">
-            <div class="benefit-card__icon" aria-hidden="true"><!-- TODO: ícono line-art pendiente --></div>
+            <img class="benefit-card__icon" src="assets/img/iconos/cutandfriedns-icono-por-que-elegirnos-4.svg" alt="Ícono de tendencias y estilo" width="134" height="134" loading="lazy">
             <h3 class="benefit-card__title">Tendencias y Estilo</h3>
             <p class="benefit-card__description">Siempre al día con los cortes y técnicas más actuales.</p>
           </article>
@@ -424,11 +417,12 @@
 
   <!-- SECCIÓN: Footer -->
   <footer class="site-footer">
-    <div class="site-footer__media" aria-hidden="true"><!-- TODO: imagen de fondo a sangre pendiente --></div>
+    <div class="site-footer__media">
+      <img src="assets/img/cutandfrieds-footer.webp" alt="Interior de la barbería Cuts And Friends" width="1919" height="472" loading="lazy">
+    </div>
     <div class="container site-footer__inner">
       <a class="site-footer__logo" href="/" aria-label="Cuts And Friends — Inicio">
-        <!-- TODO: asset de logo definitivo pendiente (ver docs/componentes.md §7) -->
-        <span class="logo-placeholder site-footer__logo-placeholder" aria-hidden="true"></span>
+        <img class="logo-placeholder site-footer__logo-placeholder" src="assets/img/iconos/Logo.svg" alt="" width="154" height="160" loading="lazy">
       </a>
 
       <nav class="site-footer__nav" aria-label="Principal">
@@ -451,13 +445,13 @@
 
       <div class="site-footer__icons">
         <div class="site-footer__icons-row">
-          <a class="site-footer__icon" href="#" aria-disabled="true" aria-label="Ubicación en Google Maps"><!-- TODO: ícono de ubicación pendiente, falta confirmar URL de Google Maps --></a>
-          <a class="site-footer__icon" href="https://wa.me/56974291678" target="_blank" rel="noopener" data-track="whatsapp" aria-label="WhatsApp"><!-- TODO: ícono de WhatsApp pendiente --></a>
+          <a class="site-footer__icon" href="#" aria-disabled="true" aria-label="Ubicación en Google Maps"><!-- TODO: falta confirmar URL de Google Maps --><img src="assets/img/iconos/icono-ubicacion.svg" alt="" width="32" height="32" loading="lazy"></a>
+          <a class="site-footer__icon" href="https://wa.me/56974291678" target="_blank" rel="noopener" data-track="whatsapp" aria-label="WhatsApp"><img src="assets/img/iconos/icono-whatsapp.svg" alt="" width="32" height="32" loading="lazy"></a>
         </div>
         <div class="site-footer__icons-row">
-          <a class="site-footer__icon" href="#" aria-disabled="true" aria-label="Instagram"><!-- TODO: ícono de Instagram pendiente, falta confirmar URL --></a>
-          <a class="site-footer__icon" href="#" aria-disabled="true" aria-label="Red social"><!-- TODO: red social pendiente de confirmar cuál --></a>
-          <a class="site-footer__icon" href="#" aria-disabled="true" aria-label="Red social"><!-- TODO: red social pendiente de confirmar cuál --></a>
+          <a class="site-footer__icon" href="#" aria-disabled="true" aria-label="Instagram"><!-- TODO: falta confirmar URL --><img src="assets/img/iconos/instagram.svg" alt="" width="38" height="38" loading="lazy"></a>
+          <a class="site-footer__icon" href="#" aria-disabled="true" aria-label="Facebook"><!-- TODO: falta confirmar URL --><img src="assets/img/iconos/icono-facebook.svg" alt="" width="32" height="32" loading="lazy"></a>
+          <a class="site-footer__icon" href="#" aria-disabled="true" aria-label="TikTok"><!-- TODO: falta confirmar URL --><img src="assets/img/iconos/icono-tiktok.svg" alt="" width="32" height="32" loading="lazy"></a>
         </div>
       </div>
     </div>
@@ -473,7 +467,7 @@
     rel="noopener"
     data-track="whatsapp"
     aria-label="Escribinos por WhatsApp"
-  ><!-- TODO: ícono de WhatsApp pendiente --></a>
+  ><img src="assets/img/iconos/icono-whatsapp.svg" alt="" width="32" height="32" loading="lazy"></a>
 
   <!-- POPUP: Agenda Pro (docs/home-estructura.md, "Decisiones confirmadas") -->
   <dialog id="agenda-dialog" class="agenda-dialog" aria-label="Agenda tu hora">
