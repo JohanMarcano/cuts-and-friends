@@ -33,6 +33,7 @@
 
 .team-card__photo {
   width: 100%;
+  height: auto;
   aspect-ratio: var(--team-photo-aspect-ratio);
   object-fit: cover;
 }

@@ -222,6 +222,7 @@
   --header-logo-height: 43px;
   --header-menu-button-size: 44px; /* Menu Button, componentes.md §8. Reutilizado como target táctil genérico en los demás botones de ícono (cerrar del menú móvil, cerrar del popup de Agenda Pro) — no hay un token de "icon button" separado documentado. */
   --header-menu-icon-size: 22px; /* ícono interior del Menu Button, §8 */
+  --header-height-mobile: 140px; /* medido: alto real de .site-header entre 320-1024px (fixed, header.css) — 132px en el peor caso (320px, dirección en 3 líneas) + margen. Usado como scroll-margin-top de las secciones ancladas por el nav (base.css) para que el header flotante no tape el título al saltar. */
 
   /* ============================================
      COMPONENTE — Botón (docs/componentes.md §1)

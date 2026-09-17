@@ -3,8 +3,7 @@
   Fuente: docs/home-estructura.md §5.
 
   1 columna centrada sobre imagen de fondo a sangre, mismo patrón que
-  Hero (hero.css): en mobile la imagen va recortada con la misma
-  máscara orgánica — pendiente el asset real en ambos casos, ver TODO.
+  Hero (hero.css).
 
   Título "NOSOTROS" en heading/h2 (docs/ESTADO.md, normalización
   2026-09-11: "encabezado Nosotros a 45px", fijo en mobile y desktop).
@@ -27,7 +26,13 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-color: var(--color-bg-muted); /* TODO: imagen de fondo a sangre + máscara orgánica mobile pendientes */
+  background-color: var(--color-bg-muted);
+}
+
+.experience__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .experience__content {
