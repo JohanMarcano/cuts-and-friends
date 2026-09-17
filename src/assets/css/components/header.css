@@ -31,13 +31,30 @@
 
 .site-header__topbar-inner {
   display: flex;
-  /* flex-start, no center (corregido 2026-09-14): la dirección puede
-     envolver a 2 líneas en mobile (ver .site-header__address) — con
-     center el teléfono quedaba flotando a media altura del bloque. */
-  align-items: flex-start;
+  /* Vuelto a center (2026-09-17): la dirección en texto, causa de la
+     envoltura a 2 líneas que pedía flex-start (corregido 2026-09-14),
+     se reemplazó en mobile por el ícono de ubicación — ya no hay
+     texto largo que envuelva en esta franja. */
+  align-items: center;
   justify-content: space-between;
   column-gap: var(--spacing-16);
   padding-block: var(--spacing-8);
+}
+
+.site-header__location {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  min-width: 0;
+}
+
+.site-header__location-link {
+  display: inline-flex;
+}
+
+.site-header__location-icon {
+  width: var(--header-location-icon-size);
+  height: var(--header-location-icon-size);
 }
 
 .site-header__address,
@@ -51,14 +68,13 @@
 }
 
 .site-header__address {
-  flex: 1 1 auto;
-  min-width: 0;
-  /* Corregido 2026-09-14: era una sola línea con ellipsis y la
-     dirección quedaba cortada — al tamaño mínimo legible (16px,
-     "Mobile propuesto") no entra completa en una línea junto al
-     teléfono dentro de 390px. Se deja envolver en 2 líneas en vez de
-     truncarla. */
-  white-space: normal;
+  /* Mobile: la dirección en texto se reemplaza por el ícono de
+     ubicación (.site-header__location-link) para liberar las 2-3
+     líneas que ocupaba — libre para agregar Waze junto al ícono más
+     adelante. En desktop vuelve a mostrarse como texto (ver media
+     query abajo), ahora enlazada a Google Maps. */
+  display: none;
+  text-decoration: none;
 }
 
 .site-header__phone {
@@ -127,6 +143,8 @@
 /* Foco visible en todos los controles interactivos del header */
 .site-header__menu-btn:focus-visible,
 .site-header__logo:focus-visible,
+.site-header__location-link:focus-visible,
+.site-header__address:focus-visible,
 .site-header__nav-list a:focus-visible,
 .mobile-menu__logo:focus-visible,
 .mobile-menu__close:focus-visible,
@@ -225,6 +243,16 @@
     justify-content: flex-start;
     column-gap: var(--spacing-32);
     padding-block: var(--spacing-20);
+  }
+
+  .site-header__location-link {
+    display: none;
+  }
+
+  .site-header__address {
+    display: inline;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .site-header__nav-row-inner {

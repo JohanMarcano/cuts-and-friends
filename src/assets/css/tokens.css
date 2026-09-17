@@ -110,8 +110,8 @@
      reemplazan queda documentado igual que antes.
      ============================================ */
   --font-size-display-xl: clamp(1.5625rem, -0.0784rem + 6.7320vw, 8rem); /* GOOD BRUSH, mobile ya legible sin cambio (25px) */
-  --font-size-heading-h1: clamp(1.5625rem, 1.1324rem + 1.7647vw, 3.25rem);
-  --font-size-heading-h1-alt-2: clamp(3.4375rem, 3.087rem + 1.4379vw, 4.8125rem);
+  --font-size-heading-h1: clamp(1.5625rem, 1.1324rem + 1.7647vw, 3.25rem); /* sin uso desde la reestructura del Hero a <h1> real (2026-09-17, ver hero.css) — se mantiene catalogado por venir de design-tokens.md */
+  --font-size-heading-h1-alt-2: clamp(3.4375rem, 3.087rem + 1.4379vw, 4.8125rem); /* ídem: sin uso desde 2026-09-17 */
   --font-size-heading-h2: clamp(1.25rem, 0.8517rem + 1.6340vw, 2.8125rem); /* mínimo = crudo Figma mobile (20px), ya legible sin "Mobile propuesto" (design-tokens.md, tabla Responsive). Usan este token: Servicios (badge), Nuestros artistas, Preguntas frecuentes. Corregido 2026-09-14: estaba fijo en 45px (bug — desbordaba el badge de Servicios en mobile, ver ESTADO.md), Experience/"Nosotros" queda aparte en --font-size-heading-h2-experience por ser una excepción confirmada */
   --font-size-heading-h2-experience: 2.8125rem; /* 45px fijo mobile y desktop, excepción confirmada solo para el título "Nosotros" (normalización 2026-09-11, ver nota arriba) — no es un clamp fluido a propósito */
   --font-size-heading-h2-alt-2: clamp(2rem, 1.7929rem + 0.8497vw, 2.8125rem);
@@ -222,7 +222,8 @@
   --header-logo-height: 43px;
   --header-menu-button-size: 44px; /* Menu Button, componentes.md §8. Reutilizado como target táctil genérico en los demás botones de ícono (cerrar del menú móvil, cerrar del popup de Agenda Pro) — no hay un token de "icon button" separado documentado. */
   --header-menu-icon-size: 22px; /* ícono interior del Menu Button, §8 */
-  --header-height-mobile: 140px; /* medido: alto real de .site-header entre 320-1024px (fixed, header.css) — 132px en el peor caso (320px, dirección en 3 líneas) + margen. Usado como scroll-margin-top de las secciones ancladas por el nav (base.css) para que el header flotante no tape el título al saltar. */
+  --header-height-mobile: 140px; /* medido: alto real de .site-header entre 320-1024px (fixed, header.css). Usado como scroll-margin-top de las secciones ancladas por el nav (base.css) para que el header flotante no tape el título al saltar. Holgura conservada tras cambiar la dirección por ícono (2026-09-17): ya no envuelve a varias líneas, pero no vale la pena recortar el token por un par de px. */
+  --header-location-icon-size: 20px; /* ícono de ubicación del header mobile (2026-09-17), reemplaza el texto de la dirección — no documentado en Figma, valor deducido de --font-size-body-lg mobile (16-24px, dirección/teléfono) para que quede a la misma altura visual que el teléfono */
 
   /* ============================================
      COMPONENTE — Botón (docs/componentes.md §1)

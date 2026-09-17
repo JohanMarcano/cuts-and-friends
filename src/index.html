@@ -1,10 +1,99 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Staging (CLAUDE.md): noindex y robots.txt se quitan recién en el
+       cutover a cutsandfriends.cl — no tocar ninguno de los dos antes. -->
   <meta name="robots" content="noindex,nofollow">
-  <title>Cuts And Friends — Barbería</title>
+  <title>Cuts & Friends | Barbería en Las Condes, Santiago</title>
+  <meta name="description" content="Barbería en Las Condes, Santiago: cortes de cabello, barba y tratamientos faciales con atención personalizada. Reserva tu hora online con Cuts & Friends.">
+
+  <!-- Open Graph / Twitter Card -->
+  <meta property="og:title" content="Cuts & Friends | Barbería en Las Condes, Santiago">
+  <meta property="og:description" content="Barbería en Las Condes, Santiago: cortes de cabello, barba y tratamientos faciales con atención personalizada. Reserva tu hora online con Cuts & Friends.">
+  <meta property="og:url" content="https://cutsandfriends.cl/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:image" content="https://cutsandfriends.cl/assets/img/imagen-open-graph.png">
+  <meta property="og:image:width" content="2400">
+  <meta property="og:image:height" content="1260">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cuts & Friends | Barbería en Las Condes, Santiago">
+  <meta name="twitter:description" content="Barbería en Las Condes, Santiago: cortes de cabello, barba y tratamientos faciales con atención personalizada. Reserva tu hora online con Cuts & Friends.">
+  <meta name="twitter:image" content="https://cutsandfriends.cl/assets/img/imagen-open-graph.png">
+
+  <!-- Favicon: negro por defecto, blanco para navegadores en modo oscuro -->
+  <link rel="icon" type="image/png" href="assets/img/favicon-negro.png">
+  <link rel="icon" type="image/png" media="(prefers-color-scheme: dark)" href="assets/img/favicon-blanco.png">
+  <link rel="apple-touch-icon" href="assets/img/favicon-negro.png">
+
+  <!-- TODO: activar en el cutover a cutsandfriends.cl (mientras el sitio
+       esté en staging con noindex, un canonical activo es señal de
+       indexación contradictoria) -->
+  <!-- <link rel="canonical" href="https://cutsandfriends.cl/"> -->
+
+  <!-- Schema.org — BarberShop. Datos verificados en Google Business
+       Profile (2026-09-17); revalidar si cambian antes del cutover.
+       Sin aggregateRating: Google no permite que el propio negocio
+       publique sus reseñas en el schema. Sin horarios especiales de
+       feriados: el schema describe el horario habitual, los feriados
+       se manejan en Google Business Profile. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarberShop",
+    "name": "Cuts & Friends",
+    "description": "Barbería en Las Condes, Santiago, especializada en cortes de cabello, barba y tratamientos faciales.",
+    "url": "https://cutsandfriends.cl/",
+    "image": "https://cutsandfriends.cl/assets/img/imagen-open-graph.png",
+    "telephone": "+56974291678",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. Apoquindo 6314, Of. 302",
+      "addressLocality": "Las Condes",
+      "addressRegion": "Región Metropolitana",
+      "postalCode": "7560903",
+      "addressCountry": "CL"
+    },
+    "hasMap": "https://maps.app.goo.gl/cfCf1aPUvpHioTTb8",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "10:00",
+        "closes": "19:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "11:00",
+        "closes": "17:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/cutsandfriends.cl",
+      "https://www.facebook.com/cutsandfriends.cl",
+      "https://www.tiktok.com/@cutsandfriends.cl"
+    ],
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://agendapro.com/iframe/overview/a2bf274c-4983-4407-bc82-c9ba6b6989bf",
+        "actionPlatform": [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform"
+        ]
+      },
+      "result": {
+        "@type": "Reservation",
+        "name": "Reserva de hora en Cuts & Friends"
+      }
+    }
+  }
+  </script>
 
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
@@ -35,7 +124,13 @@
   <header class="site-header">
     <div class="site-header__topbar">
       <div class="container site-header__topbar-inner">
-        <p class="site-header__address">Av. Apoquindo 6314, of. 302, Las Condes, Santiago</p>
+        <div class="site-header__location">
+          <a class="site-header__location-link" href="https://maps.app.goo.gl/cfCf1aPUvpHioTTb8" target="_blank" rel="noopener noreferrer" aria-label="Ver ubicación en Google Maps">
+            <img class="site-header__location-icon" src="assets/img/iconos/icono-ubicacion.svg" alt="" width="20" height="20" loading="lazy">
+          </a>
+          <!-- Waze: agregar acá un segundo .site-header__location-link cuando se defina el enlace -->
+          <a class="site-header__address" href="https://maps.app.goo.gl/cfCf1aPUvpHioTTb8" target="_blank" rel="noopener noreferrer">Av. Apoquindo 6314, of. 302, Las Condes, Santiago</a>
+        </div>
         <a class="site-header__phone" href="tel:+56974291678">+569 742 91 678</a>
       </div>
     </div>
@@ -105,21 +200,12 @@
 
       <div class="hero__content">
         <div class="hero__text">
-          <span class="hero__word">Barbería</span>
+          <h1 class="hero__title">
+            <span class="hero__title-accent">Barbería</span>
+            <span class="hero__title-sub">en Las Condes</span>
+          </h1>
 
-          <p class="hero__headline--mobile">
-            <!-- Copy de mobile no está en docs/home-estructura.md más
-                 allá de "pesos mixtos + la comodidad en GOOD BRUSH":
-                 se reutiliza la misma frase del titular desktop,
-                 repartida en 3 tramos de estilo. A confirmar con la
-                 diseñadora. -->
-            Donde el estilo <strong>se encuentra con</strong>
-            <span class="hero__accent">la comodidad</span>
-          </p>
-
-          <p class="hero__headline--desktop">
-            Donde el estilo se encuentra con la comodidad
-          </p>
+          <p class="hero__subtitle">Donde el estilo se encuentra con la comodidad</p>
         </div>
 
         <div class="hero__cta">
@@ -145,42 +231,48 @@
 
         <div class="swiper services-carousel" id="services-carousel">
           <div class="swiper-wrapper">
+            <!-- Nombres y descripciones (2026-09-17): calcados de los servicios
+                 publicados en Agenda Pro (barberiacutsandfriends.site.agendapro.com),
+                 para que sitio, agenda y Google Business Profile digan lo mismo. -->
             <div class="swiper-slide">
               <article class="service-card">
-                <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-corte.webp" alt="Corte de cabello realizado en Cuts And Friends" width="701" height="1102" loading="lazy">
+                <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-corte.webp" alt="Barbero perfilando el contorno del cabello con máquina durante un corte de cabello en Cuts And Friends" width="701" height="1102" loading="lazy">
                 <div class="service-card__body">
-                  <h3 class="service-card__title">Corte</h3>
-                  <p class="service-card__description">Cortes clásicos y modernos, adaptados a tu estilo.</p>
+                  <h3 class="service-card__title">Corte de Cabello</h3>
+                  <p class="service-card__description">Asesoría personalizada, lavado con productos de alta gama, corte y peinado para un acabado elegante y duradero.</p>
                 </div>
               </article>
             </div>
 
             <div class="swiper-slide">
               <article class="service-card">
-                <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-corte-y-barba.webp" alt="Servicio de corte de cabello y barba en Cuts And Friends" width="701" height="1102" loading="lazy">
+                <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-corte-y-barba.webp" alt="Barbero recortando la barba con máquina durante un servicio de corte de cabello y barba en Cuts And Friends" width="701" height="1102" loading="lazy">
                 <div class="service-card__body">
-                  <h3 class="service-card__title">Cabello + Barba</h3>
-                  <p class="service-card__description">El combo completo: corte de cabello y barba en una sola sesión.</p>
+                  <h3 class="service-card__title">Corte de Cabello + Barba</h3>
+                  <p class="service-card__description">Corte con asesoría personalizada y barba trabajada con toallas calientes, afeitado o perfilado y aftershave para un acabado limpio y natural.</p>
                 </div>
               </article>
             </div>
 
             <div class="swiper-slide">
               <article class="service-card">
-                <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-barba.webp" alt="Arreglo de barba en Cuts And Friends" width="701" height="1103" loading="lazy">
+                <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-barba.webp" alt="Aplicación de mascarilla con brocha antes de un perfilado de barba en Cuts And Friends" width="701" height="1103" loading="lazy">
                 <div class="service-card__body">
-                  <h3 class="service-card__title">Barba</h3>
-                  <p class="service-card__description">Diseño y arreglo de barba con precisión y cuidado.</p>
+                  <h3 class="service-card__title">Perfilado de Barba</h3>
+                  <!-- Agenda Pro no publica descripción propia para este servicio
+                       (solo duración y precio): texto adaptado del tramo "Barba" de
+                       "Corte de Cabello + Barba", que sí la documenta. -->
+                  <p class="service-card__description">Perfilado con asesoría personalizada, toallas calientes y finalización con aftershave para un acabado limpio y natural.</p>
                 </div>
               </article>
             </div>
 
             <div class="swiper-slide">
               <article class="service-card">
-                <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-facial.webp" alt="Tratamiento facial en Cuts And Friends" width="701" height="1102" loading="lazy">
+                <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-facial.webp" alt="Barbera afeitando con navaja el rostro de un cliente en Cuts And Friends" width="701" height="1102" loading="lazy">
                 <div class="service-card__body">
-                  <h3 class="service-card__title">Facial</h3>
-                  <p class="service-card__description">Tratamientos faciales para una piel más limpia y saludable.</p>
+                  <h3 class="service-card__title">Limpieza facial profunda</h3>
+                  <p class="service-card__description">Limpieza, exfoliación, vapor y mascarilla con productos hidratantes que restauran frescura y luminosidad a la piel.</p>
                 </div>
               </article>
             </div>
@@ -248,36 +340,36 @@
              estructura duplicada en gallery.css. -->
         <div class="gallery__grid gallery__grid--mobile">
           <div class="gallery__row">
-            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-1.webp" alt="Trabajo de corte y estilo, muestra 1 de la galería de Cuts And Friends" width="801" height="709" loading="lazy">
-            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-2.webp" alt="Trabajo de corte y estilo, muestra 2 de la galería de Cuts And Friends" width="651" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-1.webp" alt="Barbero perfilando el degradado en la nuca con máquina en Cuts And Friends" width="801" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-2.webp" alt="Perfilado de barba con navaja en Cuts And Friends" width="651" height="709" loading="lazy">
           </div>
           <div class="gallery__row">
-            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-3.webp" alt="Trabajo de corte y estilo, muestra 3 de la galería de Cuts And Friends" width="801" height="709" loading="lazy">
-            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-4.webp" alt="Trabajo de corte y estilo, muestra 4 de la galería de Cuts And Friends" width="651" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-3.webp" alt="Barbero recortando la barba de un cliente con máquina en Cuts And Friends" width="801" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-4.webp" alt="Aplicación de mascarilla facial con brocha durante un tratamiento de limpieza facial en Cuts And Friends" width="651" height="709" loading="lazy">
           </div>
           <div class="gallery__row">
-            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-5.webp" alt="Trabajo de corte y estilo, muestra 5 de la galería de Cuts And Friends" width="651" height="709" loading="lazy">
-            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-6.webp" alt="Trabajo de corte y estilo, muestra 6 de la galería de Cuts And Friends" width="801" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-5.webp" alt="Barbero delineando el contorno de la barba con máquina en Cuts And Friends" width="651" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-6.webp" alt="Barberos atendiendo a dos clientes al mismo tiempo en el local de Cuts And Friends" width="801" height="709" loading="lazy">
           </div>
           <div class="gallery__row">
-            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-7.webp" alt="Trabajo de corte y estilo, muestra 7 de la galería de Cuts And Friends" width="651" height="709" loading="lazy">
-            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-8.webp" alt="Trabajo de corte y estilo, muestra 8 de la galería de Cuts And Friends" width="801" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-7.webp" alt="Perfilado de cejas con navaja en Cuts And Friends" width="651" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-8.webp" alt="Barbera peinando el cabello de un cliente en Cuts And Friends" width="801" height="709" loading="lazy">
           </div>
         </div>
 
         <!-- Desktop (≥1025px): 2 filas × 4 columnas -->
         <div class="gallery__grid gallery__grid--desktop">
           <div class="gallery__row">
-            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-1.webp" alt="Trabajo de corte y estilo, muestra 1 de la galería de Cuts And Friends" width="801" height="709" loading="lazy">
-            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-2.webp" alt="Trabajo de corte y estilo, muestra 2 de la galería de Cuts And Friends" width="651" height="709" loading="lazy">
-            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-3.webp" alt="Trabajo de corte y estilo, muestra 3 de la galería de Cuts And Friends" width="801" height="709" loading="lazy">
-            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-4.webp" alt="Trabajo de corte y estilo, muestra 4 de la galería de Cuts And Friends" width="651" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-1.webp" alt="Barbero perfilando el degradado en la nuca con máquina en Cuts And Friends" width="801" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-2.webp" alt="Perfilado de barba con navaja en Cuts And Friends" width="651" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-3.webp" alt="Barbero recortando la barba de un cliente con máquina en Cuts And Friends" width="801" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-4.webp" alt="Aplicación de mascarilla facial con brocha durante un tratamiento de limpieza facial en Cuts And Friends" width="651" height="709" loading="lazy">
           </div>
           <div class="gallery__row">
-            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-5.webp" alt="Trabajo de corte y estilo, muestra 5 de la galería de Cuts And Friends" width="651" height="709" loading="lazy">
-            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-6.webp" alt="Trabajo de corte y estilo, muestra 6 de la galería de Cuts And Friends" width="801" height="709" loading="lazy">
-            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-7.webp" alt="Trabajo de corte y estilo, muestra 7 de la galería de Cuts And Friends" width="651" height="709" loading="lazy">
-            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-8.webp" alt="Trabajo de corte y estilo, muestra 8 de la galería de Cuts And Friends" width="801" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-5.webp" alt="Barbero delineando el contorno de la barba con máquina en Cuts And Friends" width="651" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-6.webp" alt="Barberos atendiendo a dos clientes al mismo tiempo en el local de Cuts And Friends" width="801" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--narrow" src="assets/img/galeria/cutandfriedns-galeria-7.webp" alt="Perfilado de cejas con navaja en Cuts And Friends" width="651" height="709" loading="lazy">
+            <img class="gallery__item gallery__item--wide" src="assets/img/galeria/cutandfriedns-galeria-8.webp" alt="Barbera peinando el cabello de un cliente en Cuts And Friends" width="801" height="709" loading="lazy">
           </div>
         </div>
       </div>

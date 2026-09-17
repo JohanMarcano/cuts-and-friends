@@ -255,3 +255,37 @@ Mobile" del Figma (MCP) y corregidos los hallazgos:
 - Agregado `icono-horario.svg` junto a "Horario Disponible:" del
   footer, mismo patrón que los demás íconos de contacto (10px mobile /
   32px desktop, tokens ya existentes).
+
+**2026-09-17** — SEO técnico y accesibilidad de HOME:
+- Hero reestructurado con un `<h1>` real (la página no tenía ninguno):
+  "Barbería" (GOOD BRUSH, accent) + "en Las Condes" (Montserrat,
+  blanco, heading/h2) seguido de un `<p>` con el subtítulo — misma
+  estructura en mobile y desktop, sin el toggle que tenía el markup
+  anterior (`.hero__word` / `.hero__headline--mobile/--desktop`), ya
+  innecesario gracias a la tipografía fluida.
+- Service Card renombradas con los nombres exactos de Agenda Pro
+  ("Corte de Cabello", "Corte de Cabello + Barba", "Perfilado de
+  Barba", "Limpieza facial profunda") y descripciones ajustadas al
+  copy real de cada servicio en Agenda Pro (verificado navegando el
+  booking en `barberiacutsandfriends.site.agendapro.com`). "Perfilado
+  de Barba" no tiene descripción propia ahí — se adaptó del tramo
+  "Barba" de "Corte de Cabello + Barba", con nota en el HTML.
+- Header mobile: la dirección en texto (2-3 líneas) se reemplazó por
+  `icono-ubicacion.svg` enlazado a Google Maps, dentro de un
+  contenedor `.site-header__location` preparado para sumar Waze
+  después. Desktop mantiene el texto, ahora también enlazado.
+- `<head>`: title/description con largo verificado, Open Graph y
+  Twitter Card completos (imagen y dimensiones reales de
+  `imagen-open-graph.png`, 2400×1260), favicon negro/blanco por
+  `prefers-color-scheme` + apple-touch-icon, `lang="es-CL"`, y
+  canonical dejado comentado con TODO para el cutover. Agregado JSON-LD
+  `BarberShop` con dirección, teléfono, horario, `sameAs`, `hasMap` y
+  `potentialAction` (ReserveAction → Agenda Pro) — sin
+  `aggregateRating` (no permitido por Google) y sin horarios de
+  feriados (se manejan en Google Business Profile).
+- Alt text de fotos de Servicios y Galería reescritos para describir
+  la acción real de cada foto (ej. "Barbero perfilando el degradado en
+  la nuca con máquina") en vez de texto genérico.
+- Verificado: un solo `<h1>` en toda la página, sin saltos de nivel
+  (h1 → h2 de sección → h3 de tarjeta/nombre). Probado en navegador
+  (390px y ~1600px) sin errores de consola.
