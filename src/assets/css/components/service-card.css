@@ -6,9 +6,9 @@
   4 tarjetas del sitio (Corte, Cabello + Barba, Barba, Facial) usan los
   mismos tokens de esas 2 variantes documentadas.
 
-  4 de las 7 tarjetas (Corte, Cabello + Barba, Barba, Facial) usan foto
-  real; las 3 restantes (Servicio 5-7) quedan con el placeholder de
-  color sólido hasta tener foto (ver TODO en el HTML).
+  4 de las 8 tarjetas (Corte, Cabello + Barba, Barba, Facial) usan foto
+  real; las 4 restantes quedan con el placeholder de color sólido hasta
+  tener foto (ver TODO en el HTML).
 
   Radio de borde y degradado (confirmado por la diseñadora, 2026-09-14):
   --radius-md es 25px (tokens.css). Sin overlay propio: el degradado
@@ -21,6 +21,24 @@
   breakpoint, sale de --service-card-aspect-ratio (350/551, proporción
   de Figma) aplicado al ancho real de la tarjeta — 100% en mobile, 20%
   del carrusel en desktop (ver services.css y tokens.css).
+
+  Precio y duración (2026-09-17): .service-card__meta, entre el título
+  y la descripción — no documentado en el Figma (componentes.md §2 solo
+  cataloga título/descripción), sumado para que la tarjeta muestre los
+  datos reales de Agenda Pro. Reutiliza --color-text-accent (ya
+  declarado en tokens.css, sin uso propio hasta ahora) para
+  diferenciarlo del texto blanco del título/descripción.
+
+  Interacción hover/focus solo desktop (2026-09-17, ver home-estructura.md
+  no aplica — pedido directo de Johan): mobile no tiene hover en
+  pantallas táctiles, así que título, precio/duración y descripción
+  quedan siempre visibles (comportamiento previo, sin cambios). Desktop
+  (≥1025px) muestra solo el título por defecto; :hover y :focus-within
+  (mismo estado, para que la tarjeta sea navegable por teclado) revelan
+  precio/duración y descripción con un fade y elevan la tarjeta con un
+  leve escalado. transition solo sobre opacity y transform — nunca
+  sobre propiedades que fuerzan reflow (width/height/top/left) — y
+  desactivada por completo bajo prefers-reduced-motion.
 */
 
 .service-card {
@@ -31,13 +49,18 @@
   overflow: hidden;
 }
 
+.service-card:focus-visible {
+  outline: 2px solid var(--color-bg-accent);
+  outline-offset: 2px;
+}
+
 .service-card__media {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background-color: var(--color-bg-muted); /* TODO: foto del servicio pendiente (Servicio 5-7) */
+  background-color: var(--color-bg-muted); /* placeholder gris: ver TODO "foto pendiente" junto a cada tarjeta sin foto en el HTML */
 }
 
 .service-card__body {
@@ -65,6 +88,15 @@
   color: var(--color-text-default);
 }
 
+.service-card__meta {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-service-card-description-mobile);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-service-card-description-mobile);
+  letter-spacing: var(--tracking-none);
+  color: var(--color-text-accent);
+}
+
 .service-card__description {
   font-family: var(--font-family-base);
   font-size: var(--font-size-service-card-description-mobile);
@@ -79,12 +111,37 @@
   .service-card {
     width: 100%;
     flex: none;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover,
+  .service-card:focus-within {
+    transform: scale(1.03);
+    z-index: 1;
   }
 
   .service-card__title {
     font-size: var(--font-size-label-md);
     font-weight: var(--font-weight-bold);
     max-width: 330px;
+  }
+
+  .service-card__meta,
+  .service-card__description {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .service-card:hover .service-card__meta,
+  .service-card:hover .service-card__description,
+  .service-card:focus-within .service-card__meta,
+  .service-card:focus-within .service-card__description {
+    opacity: 1;
+  }
+
+  .service-card__meta {
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body-sm);
   }
 
   .service-card__description {
@@ -97,5 +154,13 @@
   .service-card__body {
     padding: var(--spacing-32);
     gap: var(--spacing-16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .service-card__meta,
+  .service-card__description {
+    transition: none;
   }
 }

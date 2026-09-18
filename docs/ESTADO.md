@@ -289,3 +289,38 @@ Mobile" del Figma (MCP) y corregidos los hallazgos:
 - Verificado: un solo `<h1>` en toda la página, sin saltos de nivel
   (h1 → h2 de sección → h3 de tarjeta/nombre). Probado en navegador
   (390px y ~1600px) sin errores de consola.
+
+**2026-09-17 (2)** — Footer, interacción de Service Card y las 8
+tarjetas de servicios:
+- Footer: horario del sábado corregido a "11am - 5pm" (antes
+  "11am - 5:30pm", no coincidía con el Google Business Profile ni con
+  el `openingHoursSpecification` del schema, que ya decía `17:00`
+  correctamente — solo el texto del footer estaba desactualizado).
+- Service Card: nuevo elemento `.service-card__meta` (duración + precio,
+  ej. "45 min · $20.900"), entre el título y la descripción — no
+  catalogado en `componentes.md` §2 (el Figma no documenta precio),
+  sumado con los datos reales de Agenda Pro.
+- Interacción desktop (≥1025px): por defecto la tarjeta muestra solo el
+  título; `:hover` y `:focus-within` (mismo estado, tarjeta con
+  `tabindex="0"` para quedar navegable por teclado) revelan
+  precio/duración y descripción con `transition: opacity` y elevan la
+  tarjeta con `transition: transform` (`scale(1.03)`) — nunca se anima
+  una propiedad que fuerce reflow. `prefers-reduced-motion: reduce`
+  desactiva ambas transiciones. Mobile sin cambios: todo el texto queda
+  siempre visible, sin hover en pantallas táctiles.
+- Descomentadas las 3 tarjetas placeholder y sumada una cuarta hasta
+  completar las 8 que ofrece la barbería (verificado navegando
+  Agenda Pro, categorías Corte/Ondulación/Servicios anexos): Experiencia
+  Cuts & Friends (2 h, $65.000), Corte de Cabello para Padre e Hijo
+  (1 h 30 min, $36.900), Corte de Cabello + Perfilado de Cejas (1 h,
+  $29.900) y Ondulación Permanente (3 h, $100.000). Sin foto propia
+  todavía: quedan con el placeholder gris existente y comentario
+  `<!-- TODO: foto pendiente -->` en el HTML.
+- Verificado en navegador (Chrome headless vía CDP, 1440px y 390px):
+  carrusel con 8 slides y Swiper inicializado, scrollbar arrastrable
+  presente, sin overflow horizontal en ninguno de los dos anchos, sin
+  errores de consola. Estado hover/focus confirmado programáticamente
+  (`getComputedStyle`): título solo por defecto, precio/duración y
+  descripción en `opacity: 1` bajo `:hover` y `:focus-within`,
+  `transition-duration: 0s` bajo `prefers-reduced-motion: reduce`, y
+  los tres siempre visibles a 390px.

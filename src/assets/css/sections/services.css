@@ -11,8 +11,8 @@
   Desktop: slidesPerView "auto" (services-carousel.js) con la Service
   Card fluida al 20% del carrusel (--service-card-width-desktop) y gap
   5% (--service-card-gap-desktop, pasado a Swiper como spaceBetween:
-  "5%" — soportado desde Swiper 9+), sobre un total de 7 tarjetas (el
-  Figma solo documenta 4 como ejemplo — la barbería tiene 7 servicios,
+  "5%" — soportado desde Swiper 9+), sobre un total de 8 tarjetas (el
+  Figma solo documenta 4 como ejemplo — la barbería tiene 8 servicios,
   ver comentario en index.html). 4 visibles: 4×20% + 3×5% = 95%. El
   ancho del .swiper-slide de abajo tiene que coincidir con el de
   .service-card (service-card.css): con slidesPerView "auto" Swiper

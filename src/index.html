@@ -231,34 +231,40 @@
 
         <div class="swiper services-carousel" id="services-carousel">
           <div class="swiper-wrapper">
-            <!-- Nombres y descripciones (2026-09-17): calcados de los servicios
-                 publicados en Agenda Pro (barberiacutsandfriends.site.agendapro.com),
-                 para que sitio, agenda y Google Business Profile digan lo mismo. -->
+            <!-- Nombres, descripciones, precios y duraciones (2026-09-17):
+                 calcados de los servicios publicados en Agenda Pro
+                 (barberiacutsandfriends.site.agendapro.com), para que
+                 sitio, agenda y Google Business Profile digan lo mismo.
+                 Las 8 tarjetas son las 8 que la barbería ofrece — no
+                 quedan servicios pendientes de sumar. -->
             <div class="swiper-slide">
-              <article class="service-card">
+              <article class="service-card" tabindex="0">
                 <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-corte.webp" alt="Barbero perfilando el contorno del cabello con máquina durante un corte de cabello en Cuts And Friends" width="701" height="1102" loading="lazy">
                 <div class="service-card__body">
                   <h3 class="service-card__title">Corte de Cabello</h3>
+                  <p class="service-card__meta">45 min · $20.900</p>
                   <p class="service-card__description">Asesoría personalizada, lavado con productos de alta gama, corte y peinado para un acabado elegante y duradero.</p>
                 </div>
               </article>
             </div>
 
             <div class="swiper-slide">
-              <article class="service-card">
+              <article class="service-card" tabindex="0">
                 <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-corte-y-barba.webp" alt="Barbero recortando la barba con máquina durante un servicio de corte de cabello y barba en Cuts And Friends" width="701" height="1102" loading="lazy">
                 <div class="service-card__body">
                   <h3 class="service-card__title">Corte de Cabello + Barba</h3>
+                  <p class="service-card__meta">1 h · $34.900</p>
                   <p class="service-card__description">Corte con asesoría personalizada y barba trabajada con toallas calientes, afeitado o perfilado y aftershave para un acabado limpio y natural.</p>
                 </div>
               </article>
             </div>
 
             <div class="swiper-slide">
-              <article class="service-card">
+              <article class="service-card" tabindex="0">
                 <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-barba.webp" alt="Aplicación de mascarilla con brocha antes de un perfilado de barba en Cuts And Friends" width="701" height="1103" loading="lazy">
                 <div class="service-card__body">
                   <h3 class="service-card__title">Perfilado de Barba</h3>
+                  <p class="service-card__meta">30 min · $18.900</p>
                   <!-- Agenda Pro no publica descripción propia para este servicio
                        (solo duración y precio): texto adaptado del tramo "Barba" de
                        "Corte de Cabello + Barba", que sí la documenta. -->
@@ -268,52 +274,63 @@
             </div>
 
             <div class="swiper-slide">
-              <article class="service-card">
+              <article class="service-card" tabindex="0">
                 <img class="service-card__media" src="assets/img/servicios/cutandfrieds-servicios-facial.webp" alt="Barbera afeitando con navaja el rostro de un cliente en Cuts And Friends" width="701" height="1102" loading="lazy">
                 <div class="service-card__body">
                   <h3 class="service-card__title">Limpieza facial profunda</h3>
+                  <p class="service-card__meta">30 min · $25.000</p>
                   <p class="service-card__description">Limpieza, exfoliación, vapor y mascarilla con productos hidratantes que restauran frescura y luminosidad a la piel.</p>
                 </div>
               </article>
             </div>
 
-            <!-- Tarjetas 5-7: la barbería ofrece 7 servicios, el Figma solo
-                 documenta 4 como ejemplo (ver CLAUDE.md). Ocultas
-                 2026-09-14 hasta tener las fotos reales (no hay asset ni
-                 copy final) — el carrusel queda con las 4 tarjetas
-                 completas. Reactivar (sacar del comentario y agregar la
-                 foto real en .service-card__media) apenas lleguen.
-
             <div class="swiper-slide">
-              <article class="service-card">
+              <article class="service-card" tabindex="0">
+                <!-- TODO: foto pendiente -->
                 <div class="service-card__media" aria-hidden="true"></div>
                 <div class="service-card__body">
-                  <h3 class="service-card__title">Servicio 5</h3>
-                  <p class="service-card__description">Descripción del servicio a confirmar con el cliente.</p>
+                  <h3 class="service-card__title">Experiencia Cuts &amp; Friends</h3>
+                  <p class="service-card__meta">2 h · $65.000</p>
+                  <p class="service-card__description">Asesoría personalizada, lavado profundo, tratamiento capilar relajante, corte a tu estilo y masaje capilar: la experiencia más completa y exclusiva de la barbería.</p>
                 </div>
               </article>
             </div>
 
             <div class="swiper-slide">
-              <article class="service-card">
+              <article class="service-card" tabindex="0">
+                <!-- TODO: foto pendiente -->
                 <div class="service-card__media" aria-hidden="true"></div>
                 <div class="service-card__body">
-                  <h3 class="service-card__title">Servicio 6</h3>
-                  <p class="service-card__description">Descripción del servicio a confirmar con el cliente.</p>
+                  <h3 class="service-card__title">Corte de Cabello para Padre e Hijo</h3>
+                  <p class="service-card__meta">1 h 30 min · $36.900</p>
+                  <p class="service-card__description">Asesoría y cortes adaptados a cada edad y estilo, lavado con productos de alta gama y peinado, para compartir un momento especial entre padre e hijo.</p>
                 </div>
               </article>
             </div>
 
             <div class="swiper-slide">
-              <article class="service-card">
+              <article class="service-card" tabindex="0">
+                <!-- TODO: foto pendiente -->
                 <div class="service-card__media" aria-hidden="true"></div>
                 <div class="service-card__body">
-                  <h3 class="service-card__title">Servicio 7</h3>
-                  <p class="service-card__description">Descripción del servicio a confirmar con el cliente.</p>
+                  <h3 class="service-card__title">Corte de Cabello + Perfilado de Cejas</h3>
+                  <p class="service-card__meta">1 h · $29.900</p>
+                  <p class="service-card__description">Corte de cabello con asesoría personalizada y perfilado de cejas con navaja, para un look equilibrado y prolijo que resalta tus facciones.</p>
                 </div>
               </article>
             </div>
-            -->
+
+            <div class="swiper-slide">
+              <article class="service-card" tabindex="0">
+                <!-- TODO: foto pendiente -->
+                <div class="service-card__media" aria-hidden="true"></div>
+                <div class="service-card__body">
+                  <h3 class="service-card__title">Ondulación Permanente</h3>
+                  <p class="service-card__meta">3 h · $100.000</p>
+                  <p class="service-card__description">Diagnóstico, aplicación del producto, neutralización, secado y acabado para ondas o rizos duraderos con volumen y textura.</p>
+                </div>
+              </article>
+            </div>
           </div>
 
           <div class="swiper-scrollbar"></div>
@@ -538,7 +555,7 @@
         <div class="site-footer__schedule">
           <p class="site-footer__schedule-title"><img class="site-footer__schedule-icon" src="assets/img/iconos/icono-horario.svg" alt="" width="10" height="10" loading="lazy"> Horario Disponible:</p>
           <p class="site-footer__schedule-value">Lu - Vi: 10am - 7:30pm</p>
-          <p class="site-footer__schedule-value">Sá: 11am - 5:30pm</p>
+          <p class="site-footer__schedule-value">Sá: 11am - 5pm</p>
         </div>
       </div>
 
